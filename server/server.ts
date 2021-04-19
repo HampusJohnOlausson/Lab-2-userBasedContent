@@ -1,6 +1,6 @@
 import express from 'express'
-const userRouter = require('./routes/users.routes')
-const postRouter = require('./routes/posts.routes')
+import userRouter from './routes/users.routes'
+import postRouter from './routes/posts.routes'
 const app = express();
 
 const PORT = 4000;
