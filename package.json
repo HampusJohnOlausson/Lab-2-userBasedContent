@@ -1,0 +1,26 @@
+{
+  "name": "Lab-2-userBasedContent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HampusJohnOlausson/Lab-2-userBasedContent.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HampusJohnOlausson/Lab-2-userBasedContent/issues"
+  },
+  "homepage": "https://github.com/HampusJohnOlausson/Lab-2-userBasedContent#readme",
+  "dependencies": {
+    "@types/express": "^4.17.11",
+    "bcrypt": "^5.0.1",
+    "cookie-session": "^1.4.0",
+    "nodemon": "^2.0.7"
+  }
+}
