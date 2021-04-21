@@ -4,16 +4,19 @@ import './style/HandleUser.css'
 require('express-async-errors')
 interface apiBody  {
     userName: string, 
-    passWord: string
+    passWord: string, 
+    rePassword: string
 }
 
-function HandleUser () {
+function HandleRegister () {
     const [username, setUserName] = useState('')
     const [password, setPassWord] = useState('')
+    const [reEntePassword, setRePassWord] = useState('')
     const submitedValues = () => {
         const body = {
             userName : username, 
-            passWord : password
+            passWord : password,
+            rePassword: reEntePassword
         }
         setPassWord(body.passWord)
         makeRequest(body)   
@@ -21,7 +24,7 @@ function HandleUser () {
 
     const makeRequest = async (body: apiBody) => {
         try {
-            const response = await axios.post('/api/users/login',
+            const response = await axios.post('/api/users/register',
             body
             )
             const result = response.data
@@ -34,14 +37,17 @@ function HandleUser () {
 
     return(
         <div className="user-container">
+            <h2>Sign up</h2>
                 <h3>Username</h3>
                 <input type="text" name="userName" onChange={e => setUserName(e.target.value)} id="username"/>
                 <h3>Password</h3>
                 <input type="password" name="passWord" onChange={e => setPassWord(e.target.value)} id="password"/>
-                <button onClick={submitedValues}>Log in</button>
+                <h3>Confirm password</h3>
+                <input type="password" name="passWord" onChange={e => setRePassWord(e.target.value)} id="repassword"/>
+                <button onClick={submitedValues}>Sign up</button>
         </div>
     )
 }
 
 
-export default HandleUser;
+export default HandleRegister;

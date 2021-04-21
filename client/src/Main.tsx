@@ -1,4 +1,5 @@
 import HandleUser from "./HandleUser"
+import HandleRegister from "./HandleRegister"
 import Tweets from "./Tweets"
 
 
@@ -6,7 +7,8 @@ const Main = () => {
     return (
         <div>
             <Tweets/>
-            <HandleUser/>
+            {/* <HandleUser/> */}
+            <HandleRegister/>
         </div>
     )
 }

@@ -2,6 +2,7 @@ import express, { request } from 'express'
 import bcrypt from 'bcrypt'
 import mongoose from 'mongoose'
 const User = require('../models/user.model')
+require('express-async-errors')
 interface user {
     name: string, 
     age: number, 
@@ -26,6 +27,10 @@ userRouter.post('/register', async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(passWord, 10)
 
+    if(passWord !== req.body.rePassword) {
+        return res.status(406).json('Passwords doesnt match')
+    }
+    
     const newUser = new User({
         _id: mongoose.Types.ObjectId(),
         userName: userName, 
