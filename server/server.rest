@@ -39,7 +39,7 @@ Content-Type: application/json
 //-----------Tweets
 GET http://localhost:4000/api/posts
 
-###¨
+###
 
 GET http://localhost:4000/api/posts/2
 
@@ -56,16 +56,15 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:4000/api/posts/3
+DELETE http://localhost:4000/api/posts/608013ccc871533b90f0ddbb
 
 ###
 
 
-PUT http://localhost:4000/api/posts/2
+PUT http://localhost:4000/api/posts/60801f297cc42b49d86cc4ec
 Content-Type: application/json
 
 {
-    "name": "Lars Andersson",
-    "tweet": "tittar på tv"
+    "name": "Felix",
+    "tweet": "Hoppar på krykor"
 }
-
