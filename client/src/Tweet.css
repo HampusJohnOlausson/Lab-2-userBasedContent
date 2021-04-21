@@ -1,0 +1,39 @@
+.titlePage{
+    color: #DA2CA9;
+}
+.tweetWrapper{
+    min-height: 80vh;
+    width: 50%;
+}
+.tweetSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tweetContainer{
+    background-color: #EDEDED;
+    border: 2px solid #DA2CA9;
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 25rem;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
+.userName{
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin: 0rem;
+
+}
+.tweetParagraph{
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin: 1rem;
+}
+.timeAndDate{
+    font-size: 1rem;
+    font-weight: 400;
+}

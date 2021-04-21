@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import "./Tweet.css";
 
 export default class Tweets extends Component {
   
@@ -7,6 +8,7 @@ export default class Tweets extends Component {
         name:'',
         tweet: '',
         posts: [],
+        createdAt: '',
     }
 
     componentDidMount = () => {
@@ -28,13 +30,14 @@ export default class Tweets extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Tweets</h1>
-        <div>
+      <div className="tweetWrapper">
+        <h1 className="titlePage">Tweets</h1>
+        <div className="tweetSection">
           {this.state.posts.map((post: any, index: any) => (
-            <div key={index}>
-              <h3>{post.name}</h3>
-              <h5>{post.tweet}</h5>
+            <div className="tweetContainer" key={index}>
+              <h3 className="userName">{post.name}</h3>
+              <h5 className="tweetParagraph">{post.tweet}</h5>
+              <span className="timeAndDate">{post.createdAt}</span>
             </div>
           ))}
         </div>
