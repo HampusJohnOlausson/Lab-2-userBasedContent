@@ -16,7 +16,7 @@ userRouter.get('/', (req, res) => {
 })
 
 userRouter.post('/register', async (req, res) => {
-    const { userName, passWord, role } = req.body
+    const { userName, passWord } = req.body
     const existingUsers = await User.find({userName})
     for(let i = 0; i < existingUsers.length; i++ ) {
         if(existingUsers[i].userName === req.body.userName){
@@ -30,7 +30,7 @@ userRouter.post('/register', async (req, res) => {
         _id: mongoose.Types.ObjectId(),
         userName: userName, 
         passWord: hashedPassword, 
-        role: role
+        role: 'user'
     })
 
     await newUser.save()
