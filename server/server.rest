@@ -1,4 +1,5 @@
 
+//-------------Users
 GET http://localhost:4000/api/users
 
 ###
@@ -16,7 +17,7 @@ POST http://localhost:4000/api/users/register
 Content-Type: application/json
 
 {
-    "name": "Oliver", 
+    "name": "Jens", 
     "age": 25, 
     "password": "12341234"
 }
@@ -33,33 +34,38 @@ Content-Type: application/json
     "password": "12341234"
 }
 
-GET http://localhost:4000/api/posts/tweets
+###
+
+//-----------Tweets
+GET http://localhost:4000/api/posts
 
 ###¨
 
-GET http://localhost:4000/api/posts/tweets/2
+GET http://localhost:4000/api/posts/2
 
 ###
 
 
-POST http://localhost:4000/api/posts/tweets
+POST http://localhost:4000/api/posts/
 Content-Type: application/json
 
-{
+{   
+    "name": "Josefin Malmqvist",
     "tweet": "tweet 3"
 }
 
 ###
 
-DELETE http://localhost:4000/api/posts/tweets/3
+DELETE http://localhost:4000/api/posts/3
 
 ###
 
 
-PUT http://localhost:4000/api/posts/tweets/2
+PUT http://localhost:4000/api/posts/2
 Content-Type: application/json
 
 {
+    "name": "Lars Andersson",
     "tweet": "tittar på tv"
 }
 
