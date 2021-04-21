@@ -7,15 +7,16 @@ const app = express();
 
 const PORT = 4000;
 
-const url = '';
+const url ='';
 const options = { useNewUrlParser: true, useUnifiedTopology: true };
 
 mongoose.connect(url, options)
-    .then((result) => app.listen(PORT))
-    .catch((err) => {console.log(err);})
+.then((result) => app.listen(PORT))
+.catch((err) => {console.log(err);})
 
-app.use(express.json())
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 app.use('/api/users/', userRouter)
 app.use('/api/posts/', postRouter)
 

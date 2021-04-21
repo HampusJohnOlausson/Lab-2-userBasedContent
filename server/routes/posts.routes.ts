@@ -1,7 +1,7 @@
 import express from 'express'
 import { readBuilderProgram } from 'typescript';
 const router = express.Router()
-import Tweet from '../models/tweet.js';
+import Tweet from '../models/tweet.model.js';
 
 
 router.get('/tweets', ( req, res) => {

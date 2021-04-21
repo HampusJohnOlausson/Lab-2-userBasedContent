@@ -2,7 +2,10 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const tweetSchema = new Schema({
-
+    name: {
+        type: String,
+        required: true
+    },
     tweet: {
         type: String,
         required: true
