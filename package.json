@@ -19,6 +19,7 @@
   "homepage": "https://github.com/HampusJohnOlausson/Lab-2-userBasedContent#readme",
   "dependencies": {
     "@types/mongoose": "^5.10.5",
+    "axios": "^0.21.1",
     "bcrypt": "^5.0.1",
     "cookie-session": "^1.4.0",
     "express": "^4.17.1",
