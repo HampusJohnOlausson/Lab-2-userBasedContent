@@ -9,7 +9,8 @@ GET http://localhost:4000/api/users/allUsers
 
 ###
 
-GET http://localhost:4000
+DELETE http://localhost:4000/api/users/logOut
+
 
 ###
 
@@ -17,9 +18,9 @@ POST http://localhost:4000/api/users/register
 Content-Type: application/json
 
 {
-    "name": "Jens", 
-    "age": 25, 
-    "password": "12341234"
+    "userName": "Micke",  
+    "passWord": "12341234", 
+    "role": "user"
 }
 
 
@@ -29,9 +30,8 @@ POST http://localhost:4000/api/users/login
 Content-Type: application/json
 
 {
-    "name": "Oliver", 
-    "age": 25, 
-    "password": "12341234"
+    "userName": "Hampus",  
+    "passWord": "12341234"
 }
 
 ###
