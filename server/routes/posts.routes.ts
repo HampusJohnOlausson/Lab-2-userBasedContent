@@ -1,40 +1,44 @@
 import express from 'express'
 import { readBuilderProgram } from 'typescript';
 const router = express.Router()
-import Tweet from '../models/tweet.model.js';
+import Tweet from '../models/tweet.model';
 
-
-router.get('/tweets', ( req, res) => {
+router.get('/', ( req, res) => {
     Tweet.find().sort({ createdAt: -1 })
-    .then((result) => {
+    .then((result: any) => {
         res.status(200).json(result)
     })
-    .catch((err) => {
+    .catch((err: any) => {
       console.log(err);
     })
 })
 
 
-router.get("/tweets/:id", (req, res) => {
+router.get("/:id", (req, res) => {
     const id = req.params.id;
     Tweet.findById(id)
-      .then((result) => {
+      .then((result: any) => {
         res.status(200).json(result)
       })
-      .catch((err) => {
+      .catch((err: any) => {
         console.log(err);
       })
     
 });
 
-router.post("/tweets/", (req, res) => {
+router.post("/", (req, res) => {
 
   const tweet = new Tweet(req.body);
   tweet.save()
+    .then((result) => {
+      res.status(201).json(result);
+    }).catch((err) => {
+      console.log(err);
+    })
 
 })
 
-router.delete('/tweets/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
 
     // const tweetId = req.params.id;
     // tweets = tweets.filter((tweet) => tweet.id !== parseInt(tweetId));
@@ -46,7 +50,7 @@ router.delete('/tweets/:id', (req, res) => {
     // res.send('The tweet was deleted');
 })
 
-router.put('/tweets/:id', (req, res) => {
+router.put('/:id', (req, res) => {
     // const tweetId = req.params.id;
     // const tweet = tweets.find((t) => t.id === parseInt(tweetId));
 
