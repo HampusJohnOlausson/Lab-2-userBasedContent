@@ -9,7 +9,7 @@ const app = express();
 const PORT = 4000;
 
 const url = "mongodb://localhost:27017/lab-2";
-const options = { useNewUrlParser: true, useUnifiedTopology: true };
+const options = { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false };
 app.use(cookieSession({
     name: 'session', 
     secret: '6krHRZ8P', 
