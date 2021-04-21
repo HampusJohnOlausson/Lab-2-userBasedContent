@@ -17,10 +17,10 @@ router.get('/', ( req, res) => {
 router.get("/:id", (req, res) => {
     const id = req.params.id;
     Tweet.findById(id)
-      .then((result: any) => {
+      .then((result) => {
         res.status(200).json(result)
       })
-      .catch((err: any) => {
+      .catch((err) => {
         console.log(err);
       })
     
@@ -29,6 +29,7 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
 
   const tweet = new Tweet(req.body);
+
   tweet.save()
     .then((result) => {
       res.status(201).json(result);
@@ -40,29 +41,27 @@ router.post("/", (req, res) => {
 
 router.delete('/:id', (req, res) => {
 
-    // const tweetId = req.params.id;
-    // tweets = tweets.filter((tweet) => tweet.id !== parseInt(tweetId));
+    const id = req.params.id;
 
-    // if(!tweetId){
-    //     return res.status(404).send('couldnt find the tweet');
-    // }
+    Tweet.findByIdAndDelete(id)
+      .then((result) => {
+        res.status(202).json(result)
+      }).catch((err) => {
+        console.log(err);
+      })
 
-    // res.send('The tweet was deleted');
 })
 
 router.put('/:id', (req, res) => {
-    // const tweetId = req.params.id;
-    // const tweet = tweets.find((t) => t.id === parseInt(tweetId));
+  
+   const id = req.params.id;
 
-    // if(!tweet){
-    //     return res.status(404).send('The tweet was not found!');
-    // }
-
-    // tweet.tweet = req.body.tweet;
-
-    // res.status(200).send('the tweet has been updated!');
-
-    // res.send(tweet);
+  // Tweet.findByIdAndUpdate(id)
+  //   .then((result) => {
+  //     res.status(202).json(result);
+  //   }).catch((err) => {
+  //     console.log(err);
+  //   })
 })
 
 

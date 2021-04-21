@@ -10,7 +10,7 @@ const PORT = 4000;
 const url = "";
 const options = { useNewUrlParser: true, useUnifiedTopology: true };
 
-mongoose.connect(url, options)
+mongoose.connect(url,  options)
 .then((result: any) => app.listen(PORT))
 .catch((err: any) => {console.log(err);})
 
