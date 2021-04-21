@@ -1,59 +1,91 @@
 import express, { request } from 'express'
-import cookieSession from 'cookie-session'
 import bcrypt from 'bcrypt'
-import { log } from 'node:console'
-
+import mongoose from 'mongoose'
+const User = require('../models/user.model')
 interface user {
     name: string, 
     age: number, 
     password: string
 }
-const users: any = []
 
-const router = express.Router()
+const userRouter = express.Router()
 
-router.use(cookieSession({
-    name: 'session', 
-    secret: '6krHRZ8P', 
-    secure: false, 
-    maxAge: 10000 * 60, 
-    httpOnly: true 
-}))
 
-router.get('/', (req, res) => {
+userRouter.get('/', (req, res) => {
     res.send('Get anrop')
 })
 
-router.post('/register', async (req, res) => {
-    const { name, password } = req.body
-    const hashedPassword = await bcrypt.hash(password, 10)
-    const user = {
-        name,
-        password: hashedPassword
-    }
-    users.push(user)
-    res.status(201).json(user)
-})
-
-router.post('/login', async (req, res) => {
-    console.log(req.body)
-    const { name, password} = req.body
-    const user = users.find((u:user) => u.name === name)
-
-    if(!user || !await bcrypt.compare(password, user.password)){
-        res.status(401).json("Incorrect password or username")
-        return
+userRouter.post('/register', async (req, res) => {
+    const { userName, passWord, role } = req.body
+    const existingUsers = await User.find({userName})
+    for(let i = 0; i < existingUsers.length; i++ ) {
+        if(existingUsers[i].userName === req.body.userName){
+            return res.status(400).json('Username already exists')
+        }
     }
 
-    if(req.session !== undefined && req.session !== null){
-        req.session.username = user.name
-        res.status(201).json(user)
-        return
+    const hashedPassword = await bcrypt.hash(passWord, 10)
+
+    const newUser = new User({
+        _id: mongoose.Types.ObjectId(),
+        userName: userName, 
+        passWord: hashedPassword, 
+        role: role
+    })
+
+    await newUser.save()
+    res.status(201).json(newUser)
+})
+
+userRouter.post('/login', async (req, res) => {
+    const { userName, passWord} = req.body
+    const existingUsers = await User.find({userName})
+    const user = existingUsers.find((u: any) => u.userName === userName)
+    if(!user || !await bcrypt.compare(passWord, user.passWord)){
+        return res.status(401).json('Incorrect password or username')
+    }
+    if(req.session) {
+        req.session.username = userName
+        req.session.id = user._id
+        req.session.role = user.role
+        res.status(200).json(null)
     }
 })
 
-router.get('/allUsers', (req, res) => {
-    res.json(users)
+userRouter.get('/allUsers', secureWithRole('admin'), async (req: any, res: any) =>{
+    const result = await User.find()
+    res.status(200).json(result)
 })
 
-export default router;
+
+
+userRouter.delete('/logOut', (req, res) => {
+    if(req.session){
+        if(!req.session.username) {
+            return res.status(400).json('cant sign out')
+        }
+    }
+    
+    req.session = null
+    res.status(200).json('You are now signed out')
+})
+
+function secure(req: any, res: any, next: any) {
+    if(req.session.username) {
+        next()
+    }else {
+        res.status(401).json('you need to sign in to access this')
+    }
+}
+
+function secureWithRole(role: string) {
+    return [secure, async (req: any, res: any, next: any) => {
+        if(req.session.role === role){
+            next()
+        }else {
+            res.status(403).json('You dont have authority to see this info')
+        }
+    }]
+}
+
+export default userRouter;
