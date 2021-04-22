@@ -19,6 +19,19 @@ app.use(cookieSession({
     httpOnly: true 
 }))
 
+// app.use('/', (req: any, res: any, next) => {
+//     if(req.session) {
+//         req.loggedInUser = {
+//             username: req.session.username,
+//             id:  req.session.id,
+//             role: req.session.role  
+//         }
+//     }else {
+//         req.loggedInUser = false
+//     }
+//     next()
+// })
+
 mongoose.connect(url,  options)
 .then((result: any) => app.listen(PORT))
 .catch((err: any) => {console.log(err);})

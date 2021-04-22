@@ -42,7 +42,7 @@ userRouter.post('/register', async (req, res) => {
     res.status(201).json(newUser)
 })
 
-userRouter.post('/login', async (req, res) => {
+userRouter.post('/login', async (req, res: any) => {
     const { userName, passWord} = req.body
     const existingUsers = await User.find({userName})
     const user = existingUsers.find((u: any) => u.userName === userName)
