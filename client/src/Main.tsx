@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom"
 import React from "react"
 import UserSelection from "./UserSelection"
 import TweetsForm from "./TweetsForm"
+import Navbar from "./Navbar"
 
 
 const Main = () => {
@@ -22,6 +23,7 @@ const Main = () => {
                     <HandleRegister/>
                 </Route>
                 <Route path="/tweets">
+                    <Navbar/>
                     <TweetsForm/>
                 </Route>
             </div>
