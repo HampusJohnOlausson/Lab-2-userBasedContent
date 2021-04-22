@@ -50,6 +50,7 @@ POST http://localhost:4000/api/posts/
 Content-Type: application/json
 
 {   
+
     "tweet": "tweet 3"
 }
 
