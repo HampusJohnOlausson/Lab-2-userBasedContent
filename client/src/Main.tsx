@@ -1,11 +1,10 @@
 import HandleUser from "./HandleUser"
 import HandleRegister from "./HandleRegister"
 import Tweets from "./Tweets"
-import { BrowserRouter as Router, Route } from "react-router-dom"
-import React from "react"
-import UserSelection from "./UserSelection"
-import TweetsForm from "./TweetsForm"
-
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import React from "react";
+import UserSelection from "./UserSelection";
+import TweetWrapper from "./TweetWrapper"
 
 const Main = () => {
     return (
@@ -22,7 +21,7 @@ const Main = () => {
                     <HandleRegister/>
                 </Route>
                 <Route path="/tweets">
-                    <TweetsForm/>
+                    <TweetWrapper/>
                 </Route>
             </div>
         </Router>
