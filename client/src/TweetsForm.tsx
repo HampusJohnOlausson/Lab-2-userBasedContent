@@ -42,7 +42,7 @@ function TweetsForm() {
 }
 
 const formStyle: CSSProperties = {
-    width: "100%",
+    width: "25rem",
     height: "15rem"
 }
 

@@ -6,15 +6,16 @@ import React from "react"
 import UserSelection from "./UserSelection"
 import TweetsForm from "./TweetsForm"
 import Navbar from "./Navbar"
+import './style/TweetSection.css'
+
 
 const Main = () => {
     return (
         <Router>
-            <div>
+            <div style={{width: '100%', display: 'flex', justifyContent: 'center'}}>
                 <Route exact path="/">
                     <UserSelection/>
                 </Route>
-                <Tweets/>
                 <Route path="/login">
                     <HandleUser/>
                 </Route>
@@ -23,7 +24,14 @@ const Main = () => {
                 </Route>
                 <Route path="/tweets">
                     <Navbar/>
-                    <TweetsForm/>
+                    <div className="tweet">
+                        <div>
+                            <TweetsForm/>
+                        </div>
+                        <div className="allTweets">
+                            <Tweets/>
+                        </div>
+                    </div>
                 </Route>
             </div>
         </Router>
