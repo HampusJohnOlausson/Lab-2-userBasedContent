@@ -55,7 +55,7 @@ router.delete('/:id', (req, res) => {
 router.put('/:id', (req, res) => {
    const id = req.params.id;
 
-  Tweet.findByIdAndUpdate(id, { name: req.body.name, tweet: req.body.tweet })
+  Tweet.findByIdAndUpdate(id, { tweet: req.body.tweet })
     .then((result) => {
       res.status(202).json(null);
     }).catch((err) => {

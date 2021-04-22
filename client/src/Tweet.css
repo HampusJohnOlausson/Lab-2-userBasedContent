@@ -3,7 +3,7 @@
 }
 .tweetWrapper{
     min-height: 80vh;
-    width: 50%;
+    width: 100%;
 }
 .tweetSection{
     display: flex;
@@ -44,7 +44,7 @@
     justify-content: flex-end;
 }
 .deleteBtn{
-    background-color: red;
+    background-color: #DA2CA9;
     margin: 1rem 0rem 0rem;
     padding: .5rem;
     color: #fff;
@@ -53,7 +53,7 @@
     outline: none;
 }
 .editBtn{
-    background-color: purple;
+    background-color: #DA2CA9;
     margin: 1rem 0.5rem 0rem 0rem;
     padding: .5rem;
     border: none;
@@ -63,5 +63,19 @@
 }
 
 .editContainer{
-    margin: 0rem 1rem;
+    margin: 0rem 2rem;
+}
+.input {
+    padding: .5rem;
+    border-radius: .5rem;
+    border: 2px solid #DA2CA9;
+    outline: none;
+}
+.updateBtn{
+    background-color: #DA2CA9;
+    outline: none;
+    border-radius: .5rem;
+    border: none;
+    padding: .6rem;
+    color: #fff;
 }

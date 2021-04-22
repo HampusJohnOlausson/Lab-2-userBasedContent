@@ -1,21 +1,25 @@
-import React, { Component } from 'react'
+import React, { Component} from 'react'
 import axios from 'axios';
 import "./Tweet.css";
+import { ObjectId } from 'bson';
 
-
-
-export default class Tweets extends Component {
+interface State {
+  posts: object[];
+  editAble: Boolean;
+  tweet: String;
+}
+export default class Tweets extends Component<{}, State> {
   state = {
     posts: [],
     editAble: true,
-    tweet: '',
+    tweet: "",
   };
 
   componentDidMount = () => {
-    this.getPosts();
+    this.getTweets();
   };
 
-  getPosts = () => {
+  getTweets = () => {
     axios
       .get("/api/posts")
       .then((response) => {
@@ -28,11 +32,11 @@ export default class Tweets extends Component {
       });
   };
 
-  deleteTweet = (id: any) => {
+  deleteTweet = (id: ObjectId) => {
     axios
       .delete("api/posts/" + id)
       .then((response) => {
-        this.getPosts();
+        this.getTweets();
         console.log("deleted");
       })
       .catch((err) => {
@@ -45,9 +49,23 @@ export default class Tweets extends Component {
     console.log(this.state.editAble);
   }
 
-  updateTweet = () => {
+  handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
+    this.setState({ tweet: newValue });
+    console.log(newValue);
+  };
 
-  }
+  updateTweet = (id: ObjectId) => {
+    axios
+      .put("/api/posts/" + id, {
+        tweet: this.state.tweet
+      })
+      .then((response) => {
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   render() {
     return (
@@ -72,9 +90,20 @@ export default class Tweets extends Component {
               </div>
               {!this.state.editAble && (
                 <div className="editContainer">
-                  <form >
-                    <input type="text" defaultValue={post.tweet}  />
-                    <button type="submit">Update</button>
+                  <form>
+                    <input
+                      className="input"
+                      type="text"
+                      defaultValue={post.tweet}
+                      onChange={this.handleChange}
+                    />
+                    <button
+                      className="updateBtn"
+                      type="submit"
+                      onClick={() => this.updateTweet(post._id)}
+                    >
+                      Update
+                    </button>
                   </form>
                 </div>
               )}
