@@ -15,6 +15,17 @@ router.get('/', ( req, res) => {
     })
 })
 
+router.get("/user/tweets", (req: any, res) => {
+  console.log(req.session.username)
+    Tweet.find({ name: req.session.username })
+    .then((result: any) => {
+        res.status(200).json(result);
+    })
+    .catch((err: any) => {
+      console.log(err);
+    })
+});
+
 
 router.get("/:id", (req, res) => {
     const id = req.params.id;

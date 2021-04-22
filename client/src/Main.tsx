@@ -7,7 +7,6 @@ import UserSelection from "./UserSelection"
 import TweetsForm from "./TweetsForm"
 import Navbar from "./Navbar"
 
-
 const Main = () => {
     return (
         <Router>
