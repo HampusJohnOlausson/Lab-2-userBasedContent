@@ -1,6 +1,6 @@
 .user-container {
     width: 20rem;
-    background: grey;
+    background: #b93409;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,4 +13,13 @@
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+}
+
+
+button {
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border-radius: 0.5rem;
+    border: none;
+    background: #f2e4bf;
 }
