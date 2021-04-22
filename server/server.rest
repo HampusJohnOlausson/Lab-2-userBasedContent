@@ -36,6 +36,9 @@ Content-Type: application/json
 
 ###
 
+GET http://localhost:4000/api/users/loggedIn
+
+###
 //-----------Tweets
 GET http://localhost:4000/api/posts
 
@@ -54,6 +57,7 @@ POST http://localhost:4000/api/posts/
 Content-Type: application/json
 
 {   
+
     "tweet": "tweet 3"
 }
 

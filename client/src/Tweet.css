@@ -1,0 +1,81 @@
+.titlePage{
+    color: #DA2CA9;
+}
+.tweetWrapper{
+    min-height: 80vh;
+    width: 100%;
+}
+.tweetSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tweetContainer{
+    background-color: #EDEDED;
+    border: 2px solid #DA2CA9;
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 25rem;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
+.userName{
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin: 0rem;
+
+}
+.tweetParagraph{
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin: 1rem;
+}
+.timeAndDate{
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.lowerSection{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.deleteBtn{
+    background-color: #DA2CA9;
+    margin: 1rem 0rem 0rem;
+    padding: .5rem;
+    color: #fff;
+    border: none;
+    border-radius: .5rem;
+    outline: none;
+}
+.editBtn{
+    background-color: #DA2CA9;
+    margin: 1rem 0.5rem 0rem 0rem;
+    padding: .5rem;
+    border: none;
+    color: #fff;
+    border-radius: .5rem;
+    outline: none;
+}
+
+.editContainer{
+    margin: 0rem 2rem;
+}
+.input {
+    padding: .5rem;
+    border-radius: .5rem;
+    border: 2px solid #DA2CA9;
+    outline: none;
+}
+.updateBtn{
+    background-color: #DA2CA9;
+    outline: none;
+    border-radius: .5rem;
+    border: none;
+    padding: .6rem;
+    color: #fff;
+}

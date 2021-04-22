@@ -86,14 +86,15 @@ router.put('/:id', async (req, res) => {
     }
   }
 
-  if(req.session){
-    Tweet.findByIdAndUpdate(id, { tweet: req.body.tweet })
-      .then((result) => {
-        res.status(202).json(null);
-      }).catch((err) => {
-        console.log(err);
-      })
-  }
+
+  Tweet.findByIdAndUpdate(id, { tweet: req.body.tweet })
+    .then((result) => {
+      res.status(202).json(null);
+    }).catch((err) => {
+      console.log(err);
+    })
+
+
 });
 
 export default router;
