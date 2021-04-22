@@ -9,22 +9,23 @@ import TweetsForm from "./TweetsForm"
 
 const Main = () => {
     return (
-
-        <TweetsForm/>
-        // <Router>
-        //     <div>
-        //         <Route exact path="/">
-        //             <UserSelection/>
-        //         </Route>
-        //         <Tweets/>
-        //         <Route path="/login">
-        //             <HandleUser/>
-        //         </Route>
-        //         <Route path="/register">
-        //             <HandleRegister/>
-        //         </Route>
-        //     </div>
-        // </Router>
+        <Router>
+            <div>
+                <Route exact path="/">
+                    <UserSelection/>
+                </Route>
+                <Tweets/>
+                <Route path="/login">
+                    <HandleUser/>
+                </Route>
+                <Route path="/register">
+                    <HandleRegister/>
+                </Route>
+                <Route path="/tweets">
+                    <TweetsForm/>
+                </Route>
+            </div>
+        </Router>
     )
 }
 

@@ -3,7 +3,6 @@ import React, { CSSProperties } from 'react';
 import { useState } from 'react';
 
 interface Post {
-    name: string
     tweet: string
 }
 
@@ -13,7 +12,6 @@ function TweetsForm() {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const post = {
-            name: "Petter",
             tweet: postValue
         }
         

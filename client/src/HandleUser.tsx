@@ -28,8 +28,8 @@ function HandleUser () {
             body
             )
             const result = response.data
-            console.log(result)
-            history.push('/')  
+            console.log(result);
+            history.push('/tweets');  
         } catch (error) {
             const p = document.createElement('p')
             const container = document.getElementById('error')
