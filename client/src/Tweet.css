@@ -1,10 +1,6 @@
 .titlePage{
     color: #DA2CA9;
 }
-.tweetWrapper{
-    min-height: 80vh;
-    width: 100%;
-}
 .tweetSection{
     display: flex;
     flex-direction: column;
