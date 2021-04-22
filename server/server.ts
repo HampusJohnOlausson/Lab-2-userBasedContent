@@ -3,6 +3,7 @@ import userRouter from './routes/users.routes'
 import postRouter from './routes/posts.routes'
 import cookieSession from 'cookie-session'
 import mongoose from 'mongoose'
+require('express-async-errors')
 
 const app = express();
 
@@ -17,6 +18,19 @@ app.use(cookieSession({
     maxAge: 10000 * 60, 
     httpOnly: true 
 }))
+
+// app.use('/', (req: any, res: any, next) => {
+//     if(req.session) {
+//         req.loggedInUser = {
+//             username: req.session.username,
+//             id:  req.session.id,
+//             role: req.session.role  
+//         }
+//     }else {
+//         req.loggedInUser = false
+//     }
+//     next()
+// })
 
 mongoose.connect(url,  options)
 .then((result: any) => app.listen(PORT))

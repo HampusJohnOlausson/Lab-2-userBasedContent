@@ -1,11 +1,31 @@
+import HandleUser from "./HandleUser"
+import HandleRegister from "./HandleRegister"
 import Tweets from "./Tweets"
+import { BrowserRouter as Router, Route } from "react-router-dom"
+import React from "react"
+import UserSelection from "./UserSelection"
+import TweetsForm from "./TweetsForm"
 
 
 const Main = () => {
     return (
-        <div>
-            <Tweets/>
-        </div>
+        <Router>
+            <div>
+                <Route exact path="/">
+                    <UserSelection/>
+                </Route>
+                <Tweets/>
+                <Route path="/login">
+                    <HandleUser/>
+                </Route>
+                <Route path="/register">
+                    <HandleRegister/>
+                </Route>
+                <Route path="/tweets">
+                    <TweetsForm/>
+                </Route>
+            </div>
+        </Router>
     )
 }
 

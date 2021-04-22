@@ -2,6 +2,7 @@ import express, { request } from 'express'
 import bcrypt from 'bcrypt'
 import mongoose from 'mongoose'
 const User = require('../models/user.model')
+require('express-async-errors')
 interface user {
     name: string, 
     age: number, 
@@ -16,7 +17,7 @@ userRouter.get('/', (req, res) => {
 })
 
 userRouter.post('/register', async (req, res) => {
-    const { userName, passWord, role } = req.body
+    const { userName, passWord } = req.body
     const existingUsers = await User.find({userName})
     for(let i = 0; i < existingUsers.length; i++ ) {
         if(existingUsers[i].userName === req.body.userName){
@@ -26,18 +27,22 @@ userRouter.post('/register', async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(passWord, 10)
 
+    if(passWord !== req.body.rePassword) {
+        return res.status(406).json('Passwords doesnt match')
+    }
+    
     const newUser = new User({
         _id: mongoose.Types.ObjectId(),
         userName: userName, 
         passWord: hashedPassword, 
-        role: role
+        role: 'user'
     })
 
     await newUser.save()
     res.status(201).json(newUser)
 })
 
-userRouter.post('/login', async (req, res) => {
+userRouter.post('/login', async (req, res: any) => {
     const { userName, passWord} = req.body
     const existingUsers = await User.find({userName})
     const user = existingUsers.find((u: any) => u.userName === userName)
