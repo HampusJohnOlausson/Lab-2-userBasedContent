@@ -30,8 +30,8 @@ POST http://localhost:4000/api/users/login
 Content-Type: application/json
 
 {
-    "userName": "Hampus",  
-    "passWord": "12341234"
+    "userName": "Petter",  
+    "passWord": "Hej123"
 }
 
 ###
@@ -50,21 +50,19 @@ POST http://localhost:4000/api/posts/
 Content-Type: application/json
 
 {   
-    "name": "Josefin Malmqvist",
     "tweet": "tweet 3"
 }
 
 ###
 
-DELETE http://localhost:4000/api/posts/608013ccc871533b90f0ddbb
+DELETE http://localhost:4000/api/posts/6081436157ed521f0cb098d5
 
 ###
 
 
-PUT http://localhost:4000/api/posts/60801f297cc42b49d86cc4ec
+PUT http://localhost:4000/api/posts/608140a3a6f3993a48cc3519
 Content-Type: application/json
 
 {
-    "name": "Felix",
     "tweet": "Hoppar på krykor"
 }
