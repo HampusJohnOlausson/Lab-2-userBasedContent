@@ -43,13 +43,12 @@ function TweetsForm() {
 
 const formStyle: CSSProperties = {
     width: "25rem",
-    height: "15rem",
+    height: "15rem"
 }
 
 const titleStyle: CSSProperties = {
     color: "#E955BF",
     fontSize: "2rem",
-    justifySelf: "flex-start"
 }
 
 const inputsHolder: CSSProperties = {
