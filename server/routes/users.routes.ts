@@ -12,8 +12,12 @@ interface user {
 const userRouter = express.Router()
 
 
-userRouter.get('/', (req, res) => {
-    res.send('Get anrop')
+userRouter.get('/loggedIn', (req, res) => {
+    if(req.session) {
+        res.status(200).send(req.session.username)
+    }else {
+        res.status(401).json('No one is logged in')
+    }
 })
 
 userRouter.post('/register', async (req, res) => {
