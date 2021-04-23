@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router';
 import './style/NavBar.css'
 
@@ -16,7 +16,10 @@ export default function NavBar() {
             return error
         }
     }
-    makeRequest()
+
+    useEffect(() => {
+        makeRequest()
+    })
     
     const logOutRequest = async () => {
         try {
