@@ -44,10 +44,10 @@ function HandleUser () {
     }
 
     return (
-      <div className="user-container" id="user-container">
+      <div className="login-container" id="user-container">
         <h3>Username</h3>
         <input
-          placeholder="Your username..."  
+          placeholder="Your username..."
           className="input"
           type="text"
           name="userName"
@@ -56,7 +56,7 @@ function HandleUser () {
         />
         <h3>Password</h3>
         <input
-        placeholder="Your password..."
+          placeholder="Your password..."
           className="input"
           type="password"
           name="passWord"

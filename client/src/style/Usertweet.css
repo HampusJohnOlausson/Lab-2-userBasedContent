@@ -1,0 +1,65 @@
+.inputStyle{
+    font-size: 1.3rem;
+    padding: 0.8rem;
+    border: none;
+    outline: none;
+    color: #333;
+    background: #EDEDED;
+    width: 100%;
+}
+
+.inputsHolder{
+    background: #EDEDED;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 2px solid #DA2CA9;
+}
+.formStyle{
+    width: 25rem;
+    height: 15rem;
+}
+
+
+.btnStyle{
+    font-size: 3rem;
+    background: #E955BF;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-Items: center;
+    width: 4.5rem;
+    cursor: pointer;
+}
+.titleStyle{
+    color:  #DA2CA9;
+    font-size: 2rem;
+}
+
+@media (max-width:600px){
+
+    .inputsHolder{
+    margin: 0rem 2rem;
+    background: #EDEDED;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 2px solid #DA2CA9;
+}
+ .formStyle{
+    width: 25rem;
+    height: 12rem;
+    }
+
+    .titleStyle{
+    
+    font-size: 2rem;
+    margin-top: 8rem;
+    text-align: center;
+    }
+}

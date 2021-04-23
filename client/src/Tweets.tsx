@@ -1,6 +1,6 @@
 import React, { Component} from 'react'
 import axios from 'axios';
-import "./Tweet.css";
+import "./style/Tweet.css";
 import { ObjectId } from 'bson';
 
 interface State {
