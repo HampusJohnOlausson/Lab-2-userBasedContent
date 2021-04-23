@@ -11,6 +11,7 @@ export default function NavBar() {
         try {
             const response = await axios.get('/api/users/loggedIn')
             const result = response.data
+            console.log(result)
             setUserName(result)
         } catch (error) {
             return error
@@ -26,6 +27,7 @@ export default function NavBar() {
             await axios.delete('/api/users/logout')
             history.push('/')
         } catch (error) {
+            history.push('/')
             return error
         }
     }
