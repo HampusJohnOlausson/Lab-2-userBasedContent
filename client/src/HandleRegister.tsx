@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useHistory } from 'react-router';
-import './style/HandleUser.css'
+import "./style/HandleUser.css";
 require('express-async-errors')
 interface apiBody  {
     userName: string, 
@@ -44,19 +44,40 @@ function HandleRegister () {
         }
     }
 
-    return(
-        <div className="user-container">
-            <h2>Sign up</h2>
-                <h3>Username</h3>
-                <input type="text" name="userName" onChange={e => setUserName(e.target.value)} id="username"/>
-                <h3>Password</h3>
-                <input type="password" name="passWord" onChange={e => setPassWord(e.target.value)} id="password"/>
-                <h3>Confirm password</h3>
-                <input type="password" name="passWord" onChange={e => setRePassWord(e.target.value)} id="repassword"/>
-                <button onClick={submitedValues}>Sign up</button>
-                <div id="error"></div>
-        </div>
-    )
+    return (
+      <div className="user-container">
+        <h2>Sign up</h2>
+        <h3>Username</h3>
+        <input
+          className="input"
+          type="text"
+          name="userName"
+          placeholder="Your username..."
+          onChange={(e) => setUserName(e.target.value)}
+          id="username"
+        />
+        <h3>Password</h3>
+        <input
+          className="input"
+          type="password"
+          name="passWord"
+          placeholder="Your password..."
+          onChange={(e) => setPassWord(e.target.value)}
+          id="password"
+        />
+        <h3>Confirm password</h3>
+        <input
+          placeholder="Confirm password..."
+          className="input"
+          type="password"
+          name="passWord"
+          onChange={(e) => setRePassWord(e.target.value)}
+          id="repassword"
+        />
+        <button onClick={submitedValues}>Sign up</button>
+        <div id="error"></div>
+      </div>
+    );
 }
 
 
