@@ -20,6 +20,14 @@ userRouter.get('/loggedIn', (req, res) => {
     }
 })
 
+userRouter.get('/loggedIn/role', (req, res) => {
+    if(req.session) {
+        res.status(200).send(req.session.role)
+    }else {
+        res.status(200).send('No one is logged in')
+    }
+})
+
 userRouter.post('/register', async (req, res) => {
     const { userName, passWord } = req.body
     const existingUsers = await User.find({userName})

@@ -7,17 +7,30 @@ interface State {
   posts: object[];
   editAble: Boolean;
   tweet: String;
+  role: string;
 }
 export default class Tweets extends Component<{}, State> {
   state = {
     posts: [],
     editAble: true,
     tweet: "",
+    role: ""
   };
 
   componentDidMount = () => {
     this.getTweets();
+    this.getUserRole()
   };
+
+  async getUserRole() {
+    try {
+      const response = await axios.get('/api/users/loggedIn/role')
+      const result = response.data
+      this.setState({ role: result })
+    } catch (error) {
+      
+    }
+  }
 
   getTweets = () => {
     axios
@@ -77,17 +90,22 @@ export default class Tweets extends Component<{}, State> {
               <h3 className="userName">{post.name}</h3>
               <h5 className="tweetParagraph">{post.tweet}</h5>
               <span className="timeAndDate">{post.createdAt}</span>
-              <div className="lowerSection">
-                <button className="editBtn" onClick={this.openModal.bind(this)}>
-                  Edit
-                </button>
-                <button
-                  onClick={() => this.deleteTweet(post._id)}
-                  className="deleteBtn"
-                >
-                  Delete
-                </button>
-              </div>
+              {this.state.role === 'admin'?
+                <div className="lowerSection">
+                  <button className="editBtn" onClick={this.openModal.bind(this)}>
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => this.deleteTweet(post._id)}
+                    className="deleteBtn"
+                  >
+                    Delete
+                  </button>
+                </div>
+              : 
+                <>
+                </>  
+              }
               {!this.state.editAble && (
                 <div className="editContainer">
                   <form>
