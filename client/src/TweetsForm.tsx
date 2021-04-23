@@ -55,8 +55,9 @@ const inputsHolder: CSSProperties = {
     background: "#EDEDED",
     display: "flex",
     justifyContent: "space-between",
-    padding: "0.5rem",
-    borderRadius: "0.4rem",
+    padding: "1rem",
+    borderRadius: "1rem",
+    border: '2px solid #DA2CA9',
 }
 
 const inputStyle: CSSProperties = {
@@ -80,7 +81,7 @@ const btnStyle: CSSProperties = {
     justifyContent: "center",
     alignItems: "center",
     width: "4.5rem",
-    cursor: "pointer"
+    cursor: "pointer",
 }
 
 export default TweetsForm

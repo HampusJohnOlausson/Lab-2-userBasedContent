@@ -1,4 +1,5 @@
 .titlePage{
+    text-align: center;
     color: #DA2CA9;
 }
 .tweetSection{
@@ -12,9 +13,9 @@
     background-color: #EDEDED;
     border: 2px solid #DA2CA9;
     border-radius: 1rem;
-    padding: 1rem;
-    width: 25rem;
+    padding: 2rem;
     display: flex;
+    width: 20rem;
     flex-direction: column;
     margin: 1rem;
 }
@@ -47,6 +48,7 @@
     border: none;
     border-radius: .5rem;
     outline: none;
+    transition-duration: 0.4s;
 }
 .editBtn{
     background-color: #DA2CA9;
@@ -56,6 +58,17 @@
     color: #fff;
     border-radius: .5rem;
     outline: none;
+    transition-duration: 0.4s;
+}
+.editBtn:hover {
+  background-color: white; /* Green */
+  color: #DA2CA9;
+  border: 1px solid #DA2CA9;
+}
+.deleteBtn:hover {
+  background-color: white; /* Green */
+  color: #DA2CA9;
+  border: 1px solid #DA2CA9;
 }
 
 .editContainer{
@@ -74,4 +87,23 @@
     border: none;
     padding: .6rem;
     color: #fff;
+}
+
+@media (max-width:800px){
+    
+    .tweetContainer{
+    text-align: center;
+    width: 20rem;
+    }
+    .userName{
+    font-size: 1.2rem;
+    }
+    .tweetParagraph{
+    font-size: 1rem;
+    
+    }
+    .timeAndDate{
+    font-size: .8rem;
+
+    }
 }

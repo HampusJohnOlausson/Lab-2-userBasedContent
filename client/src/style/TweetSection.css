@@ -1,11 +1,9 @@
 .tweet {
-    margin-top: 7rem;
     display: flex;
-    max-height: 85vh;
-    width: 65%;
-    justify-content: space-between;
+    max-height: 95vh;
+    width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 0rem 1rem;
 }
 
-.allTweets {
-    overflow-y: scroll;
-}
