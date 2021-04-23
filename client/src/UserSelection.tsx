@@ -4,7 +4,9 @@ require('express-async-errors')
 
 function UserSelection () {
 
-    return(
+    return (
+      <div>
+        <h2 style={{textAlign: 'center'}}>Welcome to Twittter</h2>
         <div className="user-container">
             <div className="imageContainer"></div>
             <div className="btnContainer">
@@ -15,8 +17,10 @@ function UserSelection () {
                 <button>Sign up</button>
             </Link> 
             </div>
+
         </div>
-    )
+      </div>
+    );
 }
 
 

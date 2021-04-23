@@ -43,16 +43,30 @@ function HandleUser () {
         }
     }
 
-    return(
-        <div className="user-container" id="user-container">
-                <h3>Username</h3>
-                <input type="text" name="userName" onChange={e => setUserName(e.target.value)} id="username"/>
-                <h3>Password</h3>
-                <input type="password" name="passWord" onChange={e => setPassWord(e.target.value)} id="password"/>
-                <button onClick={submitedValues}>Log in</button>
-                <div id="error"></div>
-        </div>
-    )
+    return (
+      <div className="user-container" id="user-container">
+        <h3>Username</h3>
+        <input
+          placeholder="Your username..."  
+          className="input"
+          type="text"
+          name="userName"
+          onChange={(e) => setUserName(e.target.value)}
+          id="username"
+        />
+        <h3>Password</h3>
+        <input
+        placeholder="Your password..."
+          className="input"
+          type="password"
+          name="passWord"
+          onChange={(e) => setPassWord(e.target.value)}
+          id="password"
+        />
+        <button onClick={submitedValues}>Log in</button>
+        <div id="error"></div>
+      </div>
+    );
 }
 
 

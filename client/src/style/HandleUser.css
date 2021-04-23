@@ -1,12 +1,15 @@
 .user-container {
+
     width: 30rem;
     height: 30rem;
     background: #EDEDED;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     padding: 2rem;
+
     border-radius: 0.4rem;
     border: 1px #E955BF;
     border-radius: 0.5rem;
@@ -24,25 +27,48 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 3rem;
+
+    border-radius: 1rem;
+    border: 4px solid #DA2CA9;
+
 }
 
 .input-container {
     width: 100%;
     display: flex;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: flex-start
 }
-
 
 button {
     padding: 1rem;
-    margin: 0.5rem 0;
+    margin: 1rem 0;
     border-radius: 0.5rem;
     border: none;
+
     background: #E955BF;
     color: white;
     font-size: 1.5rem;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 10px;
     cursor: pointer;
     width: 10rem;
+
+    background: #DA2CA9;
+    color: white;
+    width: 10rem;
+    font-size: 1.2rem;
+    transition-duration: 0.4s;
+    outline: none;
+}
+button:hover {
+  background-color: white; /* Green */
+  color: #DA2CA9;
+  border: 1px solid #DA2CA9;
+}
+
+@media (max-width:600px){
+    .user-container {
+    width: 15rem;
+}
+
 }
