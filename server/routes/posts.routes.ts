@@ -16,8 +16,7 @@ router.get('/', ( req, res) => {
 })
 
 router.get("/user/tweets", (req: any, res) => {
-  console.log(req.session.username)
-    Tweet.find({ name: req.session.username })
+    Tweet.find({ name: req.session.username }).sort({ createdAt: -1 })
     .then((result: any) => {
         res.status(200).json(result);
     })
