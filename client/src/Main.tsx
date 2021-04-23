@@ -7,6 +7,7 @@ import UserSelection from "./UserSelection"
 import TweetsForm from "./TweetsForm"
 import Navbar from "./Navbar"
 import './style/TweetSection.css'
+import TweetWrapper from "./TweetWrapper"
 
 
 const Main = () => {
@@ -27,6 +28,7 @@ const Main = () => {
                     <div className="tweet">
                         <div>
                             <TweetsForm/>
+                            <TweetWrapper/>
                         </div>
                         <div className="allTweets">
                             <Tweets/>
