@@ -5,17 +5,19 @@ require('express-async-errors')
 
 function UserSelection () {
 
-    return(
+    return (
+      <div>
+        <h2 style={{textAlign: 'center'}}>Welcome to Twittter</h2>
         <div className="user-container">
-            <h2>Welcome to Twittter</h2>
-            <Link to ="/login">
-                <button>Click here to login</button>
-            </Link> 
-            <Link to ="/register">
-                <button>If no user click here to sign up</button>
-            </Link> 
+          <Link to="/login">
+            <button>Login</button>
+          </Link>
+          <Link to="/register">
+            <button>Sign Up</button>
+          </Link>
         </div>
-    )
+      </div>
+    );
 }
 
 

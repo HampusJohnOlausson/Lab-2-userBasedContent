@@ -43,3 +43,8 @@
     border-radius: 1.5rem;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+.logoutContainer button:hover {
+  background-color: white; /* Green */
+  color: #DA2CA9;
+  border: 1px solid #DA2CA9;
+}
