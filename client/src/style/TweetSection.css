@@ -1,11 +1,11 @@
 .tweet {
     display: flex;
     width: 100%;
-    min-height: 95vh;
+    height: 93vh;
     justify-content: space-around;
     flex-wrap: wrap;
+    margin-top: 10rem;
     padding: 0rem 1rem;
-    margin-top: 55rem;
     background-color:#f2e4bf;
 }
 

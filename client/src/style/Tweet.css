@@ -2,12 +2,14 @@
     text-align: center;
     color: #DA2CA9;
 }
+
 .tweetSection{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    overflow-y: scroll;
+    height: 50rem;
 }
 
 .tweetContainer{

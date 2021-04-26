@@ -1,6 +1,5 @@
-import mongoose from 'mongoose';
+import mongoose, { Document } from 'mongoose';
 const Schema = mongoose.Schema;
-import { Document } from 'mongoose'
 
 interface UserTweet extends Document {
     name: string, 
