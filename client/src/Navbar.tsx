@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 import './style/NavBar.css'
 
 export default function NavBar() {
@@ -32,16 +33,18 @@ export default function NavBar() {
         }
     }
     return (
-        <div className="header">
-            <div className="avatarContainer">
-                <div className="profilePic"></div>
-                <div className="userName">
-                    <h3>{username}</h3>
-                </div>
+      <div className="header">
+        <Link style={{textDecoration: 'none', color: 'black'}} to="/profile">
+          <div className="avatarContainer">
+            <div className="profilePic"></div>
+            <div className="userName">
+              <h3>{username}</h3>
             </div>
-            <div className="logoutContainer">
-                <button onClick={logOutRequest}>Log out</button>
-            </div>
+          </div>
+        </Link>
+        <div className="logoutContainer">
+          <button onClick={logOutRequest}>Log out</button>
         </div>
-    )
+      </div>
+    );
 }
