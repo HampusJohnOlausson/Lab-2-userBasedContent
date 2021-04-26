@@ -8,6 +8,7 @@ import TweetsForm from "./TweetsForm"
 import Navbar from "./Navbar"
 import './style/TweetSection.css'
 import TweetWrapper from "./TweetWrapper"
+import Admin from "./Admin"
 
 
 const Main = () => {
@@ -34,6 +35,9 @@ const Main = () => {
                             <Tweets/>
                         </div>
                     </div>
+                </Route>
+                <Route path="/admin">
+                    <Admin/>
                 </Route>
             </div>
         </Router>

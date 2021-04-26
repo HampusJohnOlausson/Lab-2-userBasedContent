@@ -20,6 +20,17 @@ userRouter.get('/loggedIn', (req, res) => {
     }
 })
 
+userRouter.delete('/deleteUser/:id', async (req, res) => {
+   const id = req.params.id
+   User.deleteOne({ _id: id}, function(err: Error) {
+    if(err){
+        return(err)   
+    }
+    res.json('deleted') 
+   })
+
+})
+
 userRouter.get('/loggedIn/role', (req, res) => {
     if(req.session) {
         res.status(200).send(req.session.role)
