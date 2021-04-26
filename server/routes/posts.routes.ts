@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { Request, Response} from 'express'
 import { readBuilderProgram } from 'typescript';
 const router = express.Router()
 import Tweet from '../models/tweet.model';
@@ -15,13 +15,13 @@ router.get('/', ( req, res) => {
     })
 })
 
-router.get("/user/tweets", (req: any, res) => {
-    Tweet.find({ name: req.session.username }).sort({ createdAt: -1 })
-    .then((result: any) => {
+router.get("/user/tweets", (req: Request, res: Response) => {
+    Tweet.find({ name: req.session?.username }).sort({ createdAt: -1 })
+    .then((result) => {
         res.status(200).json(result);
     })
-    .catch((err: any) => {
-      console.log(err);
+    .catch((err: Error) => {
+      res.status(500).json(err.message)
     })
 });
 
@@ -29,11 +29,11 @@ router.get("/user/tweets", (req: any, res) => {
 router.get("/:id", (req, res) => {
     const id = req.params.id;
     Tweet.findById(id)
-      .then((result: any) => {
+      .then((result) => {
         res.status(200).json(result)
       })
-      .catch((err: any) => {
-        console.log(err);
+      .catch((err: Error) => {
+        res.status(500).json(err.message)
       })
     
 });
