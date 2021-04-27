@@ -1,7 +1,7 @@
-import { CSSProperties } from '@material-ui/styles';
 import axios from 'axios';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState } from 'react';
+import { AxiosContext } from './Contexts/reqContext';
 import './style/Usertweet.css'
 
 interface Post {
@@ -10,19 +10,21 @@ interface Post {
 
 function TweetsForm() {
     const [postValue, setPostValue] = useState("");
+    const contextRequest = useContext(AxiosContext)
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const post = {
             tweet: postValue
-        }
-        
+        }  
         makePostRequest(post);
+        
     }
 
     const makePostRequest = async (post: Post) => {
         const response = await axios.post("/api/posts", post);
         console.log(response);
+        contextRequest.fetchAllTweets()
     }
 
     return (
@@ -35,7 +37,6 @@ function TweetsForm() {
                         placeholder="What's on your mind..."
                         onChange={e => setPostValue(e.target.value)}
                         rows={4} 
-
                         />
                     <input className="btnStyle" type="submit" value="send"/>
                 </div>
