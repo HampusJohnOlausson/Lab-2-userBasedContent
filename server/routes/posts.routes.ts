@@ -85,6 +85,7 @@ router.put('/:id', async (req, res) => {
     }
   }
 
+  console.log(req.body.tweet)
 
   Tweet.findByIdAndUpdate(id, { tweet: req.body.tweet })
     .then((result) => {

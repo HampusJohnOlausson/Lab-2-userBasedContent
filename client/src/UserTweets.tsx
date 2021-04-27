@@ -1,17 +1,25 @@
-import React from 'react'
+import React from 'react';
 import { CSSProperties } from 'react';
-import { TweetObject } from "./TweetWrapper"
+import AxiosDltBtn from './axiosRequests/AxiosDltBtn';
+import AxiosPutBtn from './axiosRequests/AxiosPutBtn';
+import { TweetObject } from "./TweetWrapper";
 
 interface Props {
     value: TweetObject
 }
 
-function UserTweets(props: Props) {    
+function UserTweets(props: Props) {
     return (
         <div style={rootStyle}>
-            <h3>@{props.value.name}</h3>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <h3>@{props.value.name}</h3>
+                <AxiosDltBtn value={props.value}/>
+            </div>
             <p style={tweetStyle}>{props.value.tweet}</p>
             <p style={dateStyle}>{props.value.updatedAt}</p>
+            <div style={btnHolder}>
+                <AxiosPutBtn value={props.value}/>
+            </div>
         </div>
     );
 }
@@ -33,6 +41,12 @@ const tweetStyle: CSSProperties = {
 const dateStyle: CSSProperties = {
     fontSize: "0.9rem",
     color: "grey"
+}
+
+const btnHolder: CSSProperties = {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center"
 }
 
 
