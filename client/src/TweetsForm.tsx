@@ -35,9 +35,9 @@ function TweetsForm() {
                         placeholder="What's on your mind..."
                         onChange={e => setPostValue(e.target.value)}
                         rows={4} 
-                        cols={38}
+
                         />
-                    <input className="btnStyle" type="submit" value="+"/>
+                    <input className="btnStyle" type="submit" value="send"/>
                 </div>
             </form>
         </div>

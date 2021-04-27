@@ -4,37 +4,35 @@
     border: none;
     outline: none;
     color: #333;
-    background: #EDEDED;
-    width: 100%;
+    background: #fff;
+
 }
 
 .inputsHolder{
-    background: #EDEDED;
+    background: #fff;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     padding: 1rem;
     border-radius: 1rem;
     border: 2px solid #DA2CA9;
 }
 .formStyle{
-    width: 90%;
+    width: 100%;
     height: 15rem;
 }
 
 
 .btnStyle{
-    font-size: 3rem;
+    font-size: 1rem;
     background: #E955BF;
     color: #fff;
     border: none;
     outline: none;
     border-radius: 1rem;
-    display: flex;
-    justify-content: center;
-    align-Items: center;
-    width: 4.5rem;
-    height: 4.5rem;
+    align-self: flex-start;
     cursor: pointer;
+    padding: 0.5rem 1rem
 }
 .titleStyle{
     color:  #DA2CA9;
