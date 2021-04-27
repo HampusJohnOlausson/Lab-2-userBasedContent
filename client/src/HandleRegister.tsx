@@ -30,7 +30,7 @@ function HandleRegister () {
             const response = await axios.post('/api/users/register', body)
             const result = response.data
             console.log(result)
-            history.push('/')
+            history.push('/login')
         } catch (error) {
             const p = document.createElement('p')
             const container = document.getElementById('error')

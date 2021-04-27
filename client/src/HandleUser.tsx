@@ -29,7 +29,7 @@ function HandleUser () {
             )
             const result = response.data
             console.log(result);
-            history.push('/tweets');  
+            history.push('/');  
         } catch (error) {
             const p = document.createElement('p')
             const container = document.getElementById('error')
