@@ -17,7 +17,7 @@
     border: 2px solid #DA2CA9;
 }
 .formStyle{
-    width: 25rem;
+    width: 90%;
     height: 15rem;
 }
 
@@ -33,6 +33,7 @@
     justify-content: center;
     align-Items: center;
     width: 4.5rem;
+    height: 4.5rem;
     cursor: pointer;
 }
 .titleStyle{

@@ -1,3 +1,4 @@
+import { CSSProperties } from '@material-ui/styles';
 import axios from 'axios';
 import React from 'react';
 import { useState } from 'react';
@@ -29,11 +30,12 @@ function TweetsForm() {
             <form action="/" className="formStyle" onSubmit={handleSubmit}>
                 <h2 className="titleStyle">Send a tweet</h2>
                 <div className="inputsHolder">
-                    <input 
+                    <textarea 
                         className="inputStyle" 
-                        type="text" 
                         placeholder="What's on your mind..."
                         onChange={e => setPostValue(e.target.value)}
+                        rows={4} 
+                        cols={38}
                         />
                     <input className="btnStyle" type="submit" value="+"/>
                 </div>
@@ -41,7 +43,5 @@ function TweetsForm() {
         </div>
     );
 }
-
-
 
 export default TweetsForm
