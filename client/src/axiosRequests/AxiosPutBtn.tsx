@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { CSSProperties } from 'react';
 import { TweetObject } from "../TweetWrapper";
 import CreateIcon from '@material-ui/icons/Create';
@@ -28,8 +28,8 @@ function AxiosPutBtn(props: Props) {
 
     const makePutRequest = async () => {
         const id = props.value._id;
-        const request = await axios.put(`/api/posts/${id}`, { tweet: updateValue });
-        console.log(request)
+        await axios.put(`/api/posts/${id}`, { tweet: updateValue });
+        closeInputField();
     };
 
     return (    

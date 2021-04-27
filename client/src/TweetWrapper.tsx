@@ -1,7 +1,7 @@
-import axios from 'axios';
-import { useState } from 'react';
+import { useContext } from 'react';
 import { useEffect } from 'react';
 import { CSSProperties } from 'react';
+import { AxiosContext } from './Contexts/reqContext';
 import UserTweets from './UserTweets';
 
 export interface TweetObject {
@@ -12,24 +12,19 @@ export interface TweetObject {
 
 }
 
-function TweetWrapper() {
-    const [posts, setPosts] = useState([]);
+function TweetWrapper() {    
+    const posts = useContext(AxiosContext);
 
     useEffect(() => {
-        async function fetchData() {
-            const request = await axios.get("/api/posts/user/tweets");
-            setPosts(request.data)
-            return request
-        }
-        fetchData();
-    }, []);
+        posts.fetchTweets();
+    });
 
     return (
         <div style={rootStyle}>
             <div>
                 <h2 style={titleStyle}>My recent tweets</h2>
                 <div>
-                    {posts.map((post: TweetObject) => (
+                    {posts.posts.map((post: TweetObject) => (
                         <UserTweets value={post}/>   
                     ))}
                 </div>
