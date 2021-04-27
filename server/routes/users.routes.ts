@@ -1,4 +1,4 @@
-import express, { request } from 'express'
+import express, { Request, request, Response } from 'express'
 import bcrypt from 'bcrypt'
 import mongoose from 'mongoose'
 const User = require('../models/user.model')
@@ -18,6 +18,17 @@ userRouter.get('/loggedIn', (req, res) => {
     }else {
         res.status(401).json('No one is logged in')
     }
+})
+
+userRouter.delete('/deleteUser/:id', async (req, res) => {
+   const id = req.params.id
+   User.deleteOne({ _id: id}, function(err: Error) {
+    if(err){
+        return(err)   
+    }
+    res.json('deleted') 
+   })
+
 })
 
 userRouter.get('/loggedIn/role', (req, res) => {
@@ -69,17 +80,21 @@ userRouter.post('/login', async (req, res: any) => {
     }
 })
 
-userRouter.get('/allUsers', secureWithRole('admin'), async (req: any, res: any) =>{
+userRouter.get('/allUsers', secureWithRole('admin'), async (req: Request, res: Response) => {
     const result = await User.find()
     res.status(200).json(result)
 })
 
-
+userRouter.put('/changeRole/:id', async(req: Request, res: Response) => {
+    const id = req.params.id
+    const changedUser = await User.findByIdAndUpdate(id, {role: req.body.role})
+    res.status(200).json(changedUser)
+})
 
 userRouter.delete('/logOut', (req, res) => {
     if(req.session){
         if(!req.session.username) {
-            return res.status(400).json('cant sign out')
+            return res.status(400).json('Cant sign out')
         }
     }
     

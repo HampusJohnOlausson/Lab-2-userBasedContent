@@ -8,7 +8,9 @@ import TweetsForm from "./TweetsForm"
 import Navbar from "./Navbar"
 import './style/TweetSection.css'
 import TweetWrapper from "./TweetWrapper"
+import Admin from "./Admin"
 import ProfilePage from "./ProfilePage"
+
 
 
 const Main = () => {
@@ -30,6 +32,9 @@ const Main = () => {
             <Navbar />
             <Route path="/profile">
               <ProfilePage />
+            </Route>
+            <Route path="/admin">
+                    <Admin/>
             </Route>
             <Route path="/tweets">
               <div className="tweet">

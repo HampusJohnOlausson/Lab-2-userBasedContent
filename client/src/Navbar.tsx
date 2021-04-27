@@ -1,19 +1,29 @@
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import './style/NavBar.css'
 
 export default function NavBar() {
     const [username, setUserName] = useState('');
+    const [userRole, setUserRole] = useState('')
     const history = useHistory()
 
     const makeRequest = async () => {
         try {
             const response = await axios.get('/api/users/loggedIn')
             const result = response.data
-            console.log(result)
             setUserName(result)
+        } catch (error) {
+            return error
+        }
+    }
+
+    const roleRequest = async () => {
+        try {
+            const response = await axios.get('/api/users/loggedIn/role')
+            const result = response.data
+            setUserRole(result)
         } catch (error) {
             return error
         }
@@ -21,6 +31,7 @@ export default function NavBar() {
 
     useEffect(() => {
         makeRequest()
+        roleRequest()
     })
     
     const logOutRequest = async () => {
@@ -33,17 +44,27 @@ export default function NavBar() {
         }
     }
     return (
-      <div className="header">
-        <Link style={{textDecoration: 'none', color: 'black'}} to="/profile">
-          <div className="avatarContainer">
-            <div className="profilePic"></div>
-            <div className="userName">
-              <h3>{username}</h3>
+        <div className="header">
+            <div className="avatarContainer">
+                <div className="profilePic"></div>
+                <div className="userName">
+                    {username ? 
+                    <h3>{username}</h3>
+                    :
+                    <Link to="/"><h4>Sign in...</h4></Link>
+                    }
+                </div>
             </div>
-          </div>
-        </Link>
-        <div className="logoutContainer">
-          <button onClick={logOutRequest}>Log out</button>
+            <div className="logoutContainer">
+                {userRole === 'admin' ?
+                <Link to="/admin">
+                    <p>Admin</p>
+                </Link>
+                :
+                    <>
+                    </>
+                }
+                <button onClick={logOutRequest}>Log out</button>
         </div>
       </div>
     );
