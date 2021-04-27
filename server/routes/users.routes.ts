@@ -47,7 +47,7 @@ userRouter.post('/register', async (req, res) => {
         _id: mongoose.Types.ObjectId(),
         userName: userName, 
         passWord: hashedPassword, 
-        role: 'user'
+        role: 'admin',
     })
 
     await newUser.save()

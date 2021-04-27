@@ -7,7 +7,8 @@ import UserTweets from './UserTweets';
 export interface TweetObject {
     name: string,
     tweet: string,
-    updatedAt: string
+    updatedAt: string,
+    _id: string
 
 }
 
