@@ -2,6 +2,7 @@ import React, { Component} from 'react'
 import axios from 'axios';
 import "./style/Tweet.css";
 import { ObjectId } from 'bson';
+import { AxiosContext } from './Contexts/reqContext';
 
 interface State {
   posts: object[];
@@ -10,6 +11,8 @@ interface State {
   role: string;
 }
 export default class Tweets extends Component<{}, State> {
+  static contextType = AxiosContext
+
   state = {
     posts: [],
     editAble: true,
@@ -20,6 +23,7 @@ export default class Tweets extends Component<{}, State> {
   componentDidMount = () => {
     this.getTweets();
     this.getUserRole()
+    this.context.fetchAllTweets()
   };
 
   async getUserRole() {
@@ -85,7 +89,7 @@ export default class Tweets extends Component<{}, State> {
       <div className="tweetWrapper">
         <h1 className="titlePage">Tweets</h1>
         <div className="tweetSection">
-          {this.state.posts.map((post: any) => (
+          {this.context.allPosts.map((post: any) => (
             <div className="tweetContainer" key={post._id}>
               <h3 className="userName">{post.name}</h3>
               <h5 className="tweetParagraph">{post.tweet}</h5>
