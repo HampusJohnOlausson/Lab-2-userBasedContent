@@ -46,9 +46,13 @@ export default function NavBar() {
     return (
         <div className="header">
             <div className="avatarContainer">
-                <Link to="/profilePage">
-                    <div className="profile"></div>
+                {username ?
+                <Link to="/profile">
+                    <div className="profilePic"></div>
                 </Link>
+                :
+                    <div className="profilePic"></div>
+                }
                 <div className="userName">
                     {username ? 
                     <h3>{username}</h3>
@@ -56,6 +60,9 @@ export default function NavBar() {
                     <Link to="/"><h4>Sign in...</h4></Link>
                     }
                 </div>
+            </div>
+            <div>
+                
             </div>
             <div className="logoutContainer">
                 {userRole === 'admin' ?

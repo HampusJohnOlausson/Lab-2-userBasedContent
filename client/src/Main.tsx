@@ -1,15 +1,13 @@
 import HandleUser from "./HandleUser"
 import HandleRegister from "./HandleRegister"
-import Tweets from "./Tweets"
 import { BrowserRouter as Router, Route } from "react-router-dom"
-import React from "react"
 import UserSelection from "./UserSelection"
-import TweetsForm from "./TweetsForm"
 import Navbar from "./Navbar"
 import './style/TweetSection.css'
-import TweetWrapper from "./TweetWrapper"
 import Admin from "./Admin"
 import ProfilePage from "./ProfilePage"
+
+import GeneralTweets from "./GeneralTweets"
 
 
 
@@ -29,23 +27,15 @@ const Main = () => {
             <HandleRegister />
           </Route>
           <div>
-            <Navbar />
             <Route path="/profile">
+              <Navbar />
               <ProfilePage />
             </Route>
             <Route path="/admin">
                     <Admin/>
             </Route>
             <Route path="/tweets">
-              <div className="tweet">
-                <div>
-                  <TweetsForm />
-                  <TweetWrapper />
-                </div>
-                <div className="allTweets">
-                  <Tweets />
-                </div>
-              </div>
+               <GeneralTweets/>
             </Route>
           </div>
         </div>
