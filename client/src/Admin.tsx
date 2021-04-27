@@ -14,6 +14,7 @@ export default function Admin() {
     const [users, setUser] = useState([])
     const [role, setRole] = useState('')
     const [deleted, deletedUser] = useState('')
+    const [changed, changedUser] = useState({})
 
     const getRole = async () => {
         try {
@@ -45,6 +46,16 @@ export default function Admin() {
         }
     }
 
+    const changeUser = async (userId: string) => {
+        try {
+            await axios.put(`/api/users/changeRole/${userId}`, {
+                role: changed
+            })
+        } catch (error) {
+            
+        }
+    }
+
    useEffect(() => {
        getRole()
        getUsers()
@@ -56,14 +67,23 @@ export default function Admin() {
             {role === 'admin' ?
                 <div className="adminContainer">
                     {users.map((user: specificUser) => 
-                        <div className="userList">
+                        <div key={user.userName} className="userList">
                             <ul>
                                 <li>{user.userName}</li>
                                 <li>{user._id}</li>
                                 <li>{user.role}</li>
                             </ul>
-                            <button>Edit</button>
-                            <button onClick={() => deleteUser(user._id)}>Delete</button>
+                            <div className="changeRole">
+                                <select name="role" onChange={(e) => {
+                                    const selectedRole = e.target.value
+                                    changedUser(selectedRole)
+                                }}>
+                                    <option value="user">User</option>
+                                    <option value="admin">Admin</option>
+                                </select>
+                                <button onClick={() => changeUser(user._id)}>Submit</button>
+                            </div>
+                            <button onClick={() => deleteUser(user._id)}>Delete user</button>
                         </div>
                     )}
                 </div>
