@@ -2,7 +2,6 @@ import { useContext } from 'react';
 import { useEffect } from 'react';
 import { CSSProperties } from 'react';
 import { AxiosContext } from './Contexts/reqContext';
-import UserTweets from './UserTweets';
 
 export interface TweetObject {
     name: string,
