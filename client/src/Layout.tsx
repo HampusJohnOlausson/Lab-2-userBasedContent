@@ -11,7 +11,7 @@ const Layout = () => {
 
 const rootStyle: CSSProperties = {
     width: '100%',
-    height: '100vh',
+    minHeight: '100vh',
     display: 'flex', 
     justifyContent: 'center',
     alignItems: 'center',
