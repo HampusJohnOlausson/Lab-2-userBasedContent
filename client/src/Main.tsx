@@ -17,7 +17,7 @@ const Main = () => {
         <div
           style={{ width: "100%", display: "flex", justifyContent: "center" }}
         >
-          <Route exact path="/">
+          <Route exact path="/userSelect">
             <UserSelection />
           </Route>
           <Route path="/login">
@@ -34,7 +34,7 @@ const Main = () => {
             <Route path="/admin">
                     <Admin/>
             </Route>
-            <Route path="/tweets">
+            <Route exact path="/">
                <GeneralTweets/>
             </Route>
           </div>

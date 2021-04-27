@@ -38,9 +38,9 @@ export default function NavBar() {
     const logOutRequest = async () => {
         try {
             await axios.delete('/api/users/logout')
-            history.push('/')
+            history.push('/userSelect')
         } catch (error) {
-            history.push('/')
+            history.push('/userSelect')
             return error
         }
     }
@@ -58,12 +58,12 @@ export default function NavBar() {
                     {username ? 
                     <h3>{username}</h3>
                     :
-                    <Link to="/"><h4>Sign in...</h4></Link>
+                    <Link to="/userSelect"><h4>Sign in...</h4></Link>
                     }
                 </div>
             </div>
             <div className="homeDiv">
-               <Link to="/tweets">
+               <Link to="/">
                     <HomeIcon style={icon}/>
                 </Link> 
             </div>
