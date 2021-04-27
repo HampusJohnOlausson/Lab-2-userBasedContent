@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import Tweets from "./Tweets";
 import TweetsForm from "./TweetsForm";
-import TweetWrapper from "./TweetWrapper";
+import './style/TweetSection.css'
 
 export default function GeneralTweets() {
 
@@ -30,20 +30,13 @@ export default function GeneralTweets() {
         {!loggedIn  
         ? 
         <div className="tweet">
-          <div className="allTweets">
             <Tweets />
-          </div>
-          </div>
+        </div>
         :
         <div className="tweet">
-            <div>
             <TweetsForm />
-            <TweetWrapper />
-          </div>
-          <div className="allTweets">
             <Tweets />
-          </div>
-          </div>
+        </div>
         }
         </div>
     )

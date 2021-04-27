@@ -1,26 +1,25 @@
 import axios from 'axios'
-import React, { Component } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './style/ProfilePage.css';
+import UserTweets from './UserTweets';
+import { AxiosContext } from './Contexts/reqContext';
+import { TweetObject } from './TweetWrapper';
 
-interface State {
-    name: String,
-}
-export default class ProfilePage extends Component<{}, State> {
+export default function ProfilePage () {
+  const posts = useContext(AxiosContext)
+  const [name, setName] = useState('')
 
-    state = {
-        name: ''
-    }
+    useEffect(() => {
+      getInfo();
+      posts.fetchTweets()
+    })
 
-    componentDidMount(){
-        this.getInfo();
-    }
-
-    getInfo = () => {
+    const getInfo = () => {
         axios
           .get("/api/users/loggedIn")
           .then((response) => {
             const data = response.data;
-            this.setState({ name: data });
+            setName(data);
             console.log(data);
           })
           .catch((error) => {
@@ -28,7 +27,6 @@ export default class ProfilePage extends Component<{}, State> {
           })
     }
 
-    render() {
         return (
           <div className="profileWrapper">
             <h2 className="title">Your Profile</h2>
@@ -36,9 +34,15 @@ export default class ProfilePage extends Component<{}, State> {
               <div
                 className="profileImage"
               />
-              <h4 className="profileName">{this.state.name}</h4>
+              <h4 className="profileName">{name}</h4>
+            </div>
+            <div>
+            <div>
+                  {posts.posts.map((post: TweetObject) => (
+                      <UserTweets value={post}/>   
+                  ))}
+            </div>
             </div>
           </div>
         );
-    }
 }
