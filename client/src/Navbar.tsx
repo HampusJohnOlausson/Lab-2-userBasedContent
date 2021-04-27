@@ -46,7 +46,9 @@ export default function NavBar() {
     return (
         <div className="header">
             <div className="avatarContainer">
-                <div className="profilePic"></div>
+                <Link to="/profilePage">
+                    <div className="profile"></div>
+                </Link>
                 <div className="userName">
                     {username ? 
                     <h3>{username}</h3>
