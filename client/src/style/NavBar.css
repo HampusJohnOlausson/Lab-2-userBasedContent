@@ -1,7 +1,7 @@
 .header {
     height: 5rem;
     background: white;
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
     left: 0;
@@ -15,8 +15,14 @@
     display: flex;
     align-items: center;
 }
+
 .avatarContainer h3 {
     margin: 2rem;
+}
+
+.homeDiv {
+    display: flex;
+    align-items: center;
 }
 
 .profilePic {

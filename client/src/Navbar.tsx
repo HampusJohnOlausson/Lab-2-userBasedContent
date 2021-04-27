@@ -1,8 +1,9 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { CSSProperties, useEffect, useState } from 'react'
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import './style/NavBar.css'
+import HomeIcon from '@material-ui/icons/Home';
 
 export default function NavBar() {
     const [username, setUserName] = useState('');
@@ -61,8 +62,10 @@ export default function NavBar() {
                     }
                 </div>
             </div>
-            <div>
-                
+            <div className="homeDiv">
+               <Link to="/tweets">
+                    <HomeIcon style={icon}/>
+                </Link> 
             </div>
             <div className="logoutContainer">
                 {userRole === 'admin' ?
@@ -77,4 +80,9 @@ export default function NavBar() {
         </div>
       </div>
     );
+}
+
+const icon: CSSProperties = {
+    color: '#E955BF',
+    fontSize: '3rem'
 }

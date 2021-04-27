@@ -21,14 +21,6 @@ function TweetWrapper() {
 
     return (
         <div style={rootStyle}>
-            <div>
-                <h2 style={titleStyle}>My recent tweets</h2>
-                <div>
-                    {posts.posts.map((post: TweetObject) => (
-                        <UserTweets value={post}/>   
-                    ))}
-                </div>
-            </div>
         </div>
     )
 }
