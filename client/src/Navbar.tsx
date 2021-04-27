@@ -65,7 +65,7 @@ export default function NavBar() {
                     </>
                 }
                 <button onClick={logOutRequest}>Log out</button>
-            </div>
         </div>
-    )
+      </div>
+    );
 }
