@@ -13,7 +13,7 @@ export default function GeneralTweets() {
       try {
         const response = await axios.get('/api/users/loggedIn')
         const result = response.data
-        setLoggedIn(result)
+        setLoggedIn(result.userName)
         console.log('TEST')
       } catch (error) {
         
