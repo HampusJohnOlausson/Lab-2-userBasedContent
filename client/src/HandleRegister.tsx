@@ -46,6 +46,7 @@ function HandleRegister () {
 
     return (
       <div className="user-container">
+        <div className="imageContainer"></div>
         <h2>Sign up</h2>
         <h3>Username</h3>
         <input

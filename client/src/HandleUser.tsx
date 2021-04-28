@@ -45,6 +45,7 @@ function HandleUser () {
 
     return (
       <div className="login-container" id="user-container">
+        <div className="imageContainer"></div>
         <h3>Username</h3>
         <input
           placeholder="Your username..."

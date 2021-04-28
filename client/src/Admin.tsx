@@ -78,6 +78,7 @@ export default function Admin() {
                                     const selectedRole = e.target.value
                                     changedUser(selectedRole)
                                 }}>
+                                    <option value="" disabled selected>Select role...</option>
                                     <option value="user">User</option>
                                     <option value="admin">Admin</option>
                                 </select>

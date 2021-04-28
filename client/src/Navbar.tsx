@@ -76,7 +76,18 @@ export default function NavBar() {
                     <>
                     </>
                 }
+                {username? 
                 <button onClick={logOutRequest}>Log out</button>
+                :
+                <div className="userNavigation">
+                    <Link to="/register">
+                        <button>Sign up</button>
+                    </Link>
+                    <Link to="/login">
+                        <button>Log in</button>
+                    </Link>
+                </div>
+                }
         </div>
       </div>
     );
