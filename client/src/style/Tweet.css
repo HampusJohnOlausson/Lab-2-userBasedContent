@@ -29,7 +29,7 @@
 .tweetParagraph{
     font-size: 1.4rem;
     font-weight: 400;
-    margin: 1rem;
+    margin: 1rem 0rem;
 }
 .timeAndDate{
     font-size: 1rem;
@@ -39,7 +39,7 @@
 .lowerSection{
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    margin-top: 1rem
 }
 .deleteBtn{
     background-color: #DA2CA9;

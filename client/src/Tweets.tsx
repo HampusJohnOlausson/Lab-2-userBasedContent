@@ -1,14 +1,17 @@
-import React, { Component} from 'react'
+import { Component} from 'react'
 import axios from 'axios';
 import "./style/Tweet.css";
-import { ObjectId } from 'bson';
 import { AxiosContext } from './Contexts/reqContext';
+import AxiosPutBtn from './axiosRequests/AxiosPutBtn';
+import AxiosDltBtn from './axiosRequests/AxiosDltBtn';
+import { TweetObject } from './TweetWrapper';
 
 interface State {
-  posts: object[];
+  posts: Object[];
   editAble: Boolean;
   tweet: String;
   role: string;
+  userName: string;
 }
 export default class Tweets extends Component<{}, State> {
   static contextType = AxiosContext
@@ -17,13 +20,18 @@ export default class Tweets extends Component<{}, State> {
     posts: [],
     editAble: true,
     tweet: "",
-    role: ""
+    role: "",
+    userName: "",
   };
 
   componentDidMount = () => {
-    this.getTweets();
-    this.getUserRole()
-    this.context.fetchAllTweets()
+    this.getUserRole();
+    this.fetchUserName();
+    this.context.fetchAllTweets();
+  };
+
+  componentDidUpdate = () => {
+    this.context.fetchAllTweets();
   };
 
   async getUserRole() {
@@ -36,99 +44,35 @@ export default class Tweets extends Component<{}, State> {
     }
   }
 
-  getTweets = () => {
-    axios
-      .get("/api/posts")
-      .then((response) => {
-        const data = response.data;
-        this.setState({ posts: data });
-        console.log(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  deleteTweet = (id: ObjectId) => {
-    axios
-      .delete("api/posts/" + id)
-      .then((response) => {
-        this.getTweets();
-        console.log("deleted");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  openModal() {
-    this.setState({ editAble: !this.state.editAble });
-    console.log(this.state.editAble);
+  async fetchUserName() {
+    try {
+      const response = await axios.get('/api/users/loggedIn')
+      const result = response.data
+      this.setState({ userName: result });
+      console.log(this.state.userName)
+    } catch (error) {
+      console.error(error)
+    }
   }
-
-  handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.target.value;
-    this.setState({ tweet: newValue });
-    console.log(newValue);
-  };
-
-  updateTweet = (id: ObjectId) => {
-    axios
-      .put("/api/posts/" + id, {
-        tweet: this.state.tweet
-      })
-      .then((response) => {
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   render() {
     return (
       <div className="tweetWrapper">
         <h1 className="titlePage">Tweets</h1>
         <div className="tweetSection">
-          {this.context.allPosts.map((post: any) => (
+          {this.context.allPosts.map((post: TweetObject) => (
             <div className="tweetContainer" key={post._id}>
-              <h3 className="userName">{post.name}</h3>
+              <h3 className="userName">@{post.name}</h3>
               <h5 className="tweetParagraph">{post.tweet}</h5>
-              <span className="timeAndDate">{post.createdAt}</span>
-              {this.state.role === 'admin'?
+              <span className="timeAndDate">{post.updatedAt}</span>
+              {this.state.role === 'admin' || post.name === this.state.userName ?
                 <div className="lowerSection">
-                  <button className="editBtn" onClick={this.openModal.bind(this)}>
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => this.deleteTweet(post._id)}
-                    className="deleteBtn"
-                  >
-                    Delete
-                  </button>
+                  <AxiosDltBtn value={post}/>
+                  <AxiosPutBtn value={post}/>
                 </div>
               : 
-                <>
-                </>  
+                <></>  
               }
-              {!this.state.editAble && (
-                <div className="editContainer">
-                  <form>
-                    <input
-                      className="input"
-                      type="text"
-                      defaultValue={post.tweet}
-                      onChange={this.handleChange}
-                    />
-                    <button
-                      className="updateBtn"
-                      type="submit"
-                      onClick={() => this.updateTweet(post._id)}
-                    >
-                      Update
-                    </button>
-                  </form>
-                </div>
-              )}
             </div>
           ))}
         </div>
@@ -136,5 +80,3 @@ export default class Tweets extends Component<{}, State> {
     );
   }
 }
-
-
