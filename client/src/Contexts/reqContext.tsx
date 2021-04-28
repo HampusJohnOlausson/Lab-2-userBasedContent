@@ -3,9 +3,9 @@ import axios from 'axios';
 
 interface TweetObject {
     name: string, 
-    tweet: string, 
-    updatedAt: string, 
-    _id: string 
+    tweet: string,  
+    _id: string, 
+    date: string
 }
 
 interface State {

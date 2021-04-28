@@ -93,7 +93,7 @@ export default class Tweets extends Component<{}, State> {
             <div className="tweetContainer" key={post._id}>
               <h3 className="userName">{post.name}</h3>
               <h5 className="tweetParagraph">{post.tweet}</h5>
-              <span className="timeAndDate">{post.createdAt}</span>
+              <span className="timeAndDate">{post.date}</span>
               {this.state.role === 'admin'?
                 <div className="lowerSection">
                   <button className="editBtn" onClick={this.openModal.bind(this)}>

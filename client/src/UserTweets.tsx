@@ -18,7 +18,7 @@ function UserTweets(props: Props) {
             <div style={tweetStyle}>
                 <p>{props.value.tweet}</p>
             </div>
-            <p style={dateStyle}>{props.value.updatedAt}</p>
+            <p style={dateStyle}>{props.value.date}</p>
             <div style={btnHolder}>
                 <AxiosPutBtn value={props.value}/>
             </div>

@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 interface UserTweet extends Document {
     name: string, 
-    tweet: string 
+    tweet: string, 
+    user: Schema.Types.ObjectId | Object
 }
 
 const tweetSchema = new Schema({
@@ -11,11 +12,19 @@ const tweetSchema = new Schema({
         type: String,
         required: true
     },
+    user: {
+        type: Schema.Types.ObjectId, 
+        ref: 'Users'
+    },
     tweet: {
         type: String,
         required: true
+    }, 
+    date: {
+        type: String, 
+        required: true
     }
-}, { timestamps: true })
+})
 
 const Tweet = mongoose.model<UserTweet>('Tweet', tweetSchema);
 export default Tweet;

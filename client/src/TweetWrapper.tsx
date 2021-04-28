@@ -6,9 +6,8 @@ import { AxiosContext } from './Contexts/reqContext';
 export interface TweetObject {
     name: string,
     tweet: string,
-    updatedAt: string,
+    date: string,
     _id: string
-
 }
 
 function TweetWrapper() {    

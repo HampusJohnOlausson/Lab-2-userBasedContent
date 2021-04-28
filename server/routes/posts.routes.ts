@@ -6,7 +6,7 @@ import mongoose from 'mongoose'
 
 
 router.get('/', ( req, res) => {
-    Tweet.find().sort({ createdAt: -1 })
+    Tweet.find().populate('user')
     .then((result: any) => {
         res.status(200).json(result)
     })
@@ -16,7 +16,7 @@ router.get('/', ( req, res) => {
 })
 
 router.get("/user/tweets", (req: Request, res: Response) => {
-    Tweet.find({ name: req.session?.username }).sort({ createdAt: -1 })
+    Tweet.find({ name: req.session?.username })
     .then((result) => {
         res.status(200).json(result);
     })
@@ -39,6 +39,12 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", async (req, res) => {
+  let today = new Date()
+  const date = today.getDate().toString()
+  const month = today.getMonth().toString()
+  const year = today.getFullYear().toString()
+  const tweetDate = date + '/' + month + '/' + year
+
 
   if(req.session) {
     if(!req.session.username) {
@@ -47,7 +53,8 @@ router.post("/", async (req, res) => {
     const tweet = new Tweet(
       {
         tweet: req.body.tweet, 
-        name: req.session.username
+        name: req.session.username, 
+        date: tweetDate
       }
       );
       await tweet.save()
@@ -77,6 +84,12 @@ router.delete('/:id', async (req, res) => {
 })
 
 router.put('/:id', async (req, res) => {
+  let today = new Date()
+  const date = today.getDate().toString()
+  const month = today.getMonth().toString()
+  const year = today.getFullYear().toString()
+  const tweetDate = date + '/' + month + '/' + year
+
   const id = req.params.id;
   const currentTweet = await Tweet.findById(id)
   if(req.session && currentTweet) {
@@ -87,7 +100,7 @@ router.put('/:id', async (req, res) => {
 
   console.log(req.body.tweet)
 
-  Tweet.findByIdAndUpdate(id, { tweet: req.body.tweet })
+  Tweet.findByIdAndUpdate(id, { tweet: req.body.tweet, date: tweetDate })
     .then((result) => {
       res.status(202).json(null);
     }).catch((err) => {

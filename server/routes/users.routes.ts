@@ -67,7 +67,7 @@ userRouter.post('/register', async (req, res) => {
 
 userRouter.post('/login', async (req, res: any) => {
     const { userName, passWord} = req.body
-    const existingUsers = await User.find({userName})
+    const existingUsers = await User.find({userName}).select('+passWord')
     const user = existingUsers.find((u: any) => u.userName === userName)
     if(!user || !await bcrypt.compare(passWord, user.passWord)){
         return res.status(401).json('Incorrect password or username')
