@@ -13,8 +13,10 @@ const userRouter = express.Router()
 
 
 userRouter.get('/loggedIn', (req, res) => {
+
     if(req.session) {
-        res.status(200).send(req.session.username)
+        const userSession  = { userName: req.session.username, role: req.session.role, _id: req.session.id }
+        res.status(200).send(userSession)
     }else {
         res.status(401).json('No one is logged in')
     }

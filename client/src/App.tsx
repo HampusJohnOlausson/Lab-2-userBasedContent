@@ -4,13 +4,16 @@ import './App.css';
 import Layout from './Layout';
 import { BrowserRouter } from 'react-router-dom'
 import AxiosProvider from './Contexts/reqContext';
+import UserProvider from './Contexts/userContext';
 
 function App() {
   return (
     <BrowserRouter>
-      <AxiosProvider>
-        <Layout/>
-      </AxiosProvider>
+      <UserProvider>
+        <AxiosProvider>
+          <Layout />
+        </AxiosProvider>
+      </UserProvider>
     </BrowserRouter>
   );
 }
