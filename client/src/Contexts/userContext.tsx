@@ -35,6 +35,10 @@ class UserProvider extends Component<{}, State> {
     this.fetchUserSession();
   }
 
+  componentDidUpdate = () => {
+      this.fetchUserSession();
+  }
+
   render() {
     return (
       <UserContext.Provider
