@@ -11,7 +11,7 @@
 }
 
 .tweetContainer{
-    background-color: #EDEDED;
+    background: rgba(0, 0, 0, 0.05);
     border: 2px solid #DA2CA9;
     border-radius: 1rem;
     padding: 2rem;

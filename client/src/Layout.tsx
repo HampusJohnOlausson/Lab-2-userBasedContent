@@ -15,7 +15,7 @@ const rootStyle: CSSProperties = {
     display: 'flex', 
     justifyContent: 'center',
     alignItems: 'center',
-    background: '#f2e4bf'
+    background: 'white'
 }
 
 export default Layout

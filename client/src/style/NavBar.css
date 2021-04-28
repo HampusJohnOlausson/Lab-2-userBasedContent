@@ -1,6 +1,6 @@
 .header {
     height: 5rem;
-    background: white;
+    background: rgba(0, 0, 0, 0.1);
     position: absolute;
     top: 0;
     right: 0;
@@ -8,10 +8,12 @@
     padding: 1rem;
     display: flex;
     justify-content: space-between;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .avatarContainer {
     height: 100%;
+    width: 18rem;
     display: flex;
     align-items: center;
 }
@@ -35,7 +37,6 @@
 }
 
 .logoutContainer {
-    width: 15rem;
     height: 100%;
     display: flex;
     justify-content: space-between;
@@ -49,8 +50,44 @@
     border-radius: 0.5rem;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+
 .logoutContainer button:hover {
   background-color: white; /* Green */
   color: #DA2CA9;
   border: 1px solid #DA2CA9;
+}
+
+.userNavigation {
+    display: flex;
+}
+
+.userNavigation button{
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    width: 7rem;
+    margin: 0 1rem;
+}
+
+@media (max-width:500px){
+    .userNavigation {
+    flex-direction: column;
+    }
+
+    .userNavigation button {
+        font-size: 1rem;
+        padding: .2rem;
+        width: 4rem;
+        margin: .5rem 0;
+    }
+
+    .userName {
+        display: none;
+    }
+    .avatarContainer {
+        width: 5rem;
+    }
+
+    .header {
+        justify-content: space-around;
+    }
 }
