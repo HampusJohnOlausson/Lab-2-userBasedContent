@@ -1,7 +1,8 @@
 import NavBar from "./Navbar";
 import '../src/style/Admin.css'
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { UserContext } from "./Contexts/userContext";
 
 interface specificUser {
     _id: string
@@ -16,14 +17,21 @@ export default function Admin() {
     const [deleted, deletedUser] = useState('')
     const [changed, changedUser] = useState({})
 
-    const getRole = async () => {
-        try {
-            const response = await axios.get('/api/users/loggedIn/role')
-            const result: string = response.data
-            setRole(result)
-        } catch (error) {
+
+    const userContext = useContext(UserContext);
+
+    // const getRole = async () => {
+    //     try {
+    //         const response = await axios.get('/api/users/loggedIn/role')
+    //         const result: string = response.data
+    //         setRole(result)
+    //     } catch (error) {
             
-        }
+    //     }
+    // }
+
+    const fetchContext = () => {
+        setRole(userContext.user.role);
     }
 
     const getUsers = async () => {
@@ -57,8 +65,9 @@ export default function Admin() {
     }
 
    useEffect(() => {
-       getRole()
-       getUsers()
+    //    getRole()
+       getUsers();
+       fetchContext();
    })
 
     return(

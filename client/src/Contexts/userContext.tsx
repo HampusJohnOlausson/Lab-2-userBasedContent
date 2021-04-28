@@ -1,60 +1,51 @@
 import React, { Component, createContext } from "react";
 import axios from "axios";
 
-interface TweetObject {
-  name: string;
-  tweet: string;
-  updatedAt: string;
-  _id: string;
+interface UserObject {
+  userName: string,
+  role: string,
+  _id: string 
 }
 
 interface State {
-  posts: TweetObject[];
-  allPosts: TweetObject[];
+  user: UserObject;
 }
 
 interface ContextProps extends State {
-  fetchTweets: () => void;
-  fetchAllTweets: () => void;
+  fetchUser: () => void;
 }
 
 export const UserContext = createContext<ContextProps>({
-  posts: [],
-  allPosts: [],
-  fetchTweets: () => {},
-  fetchAllTweets: () => {},
+  user: {userName: '', role: '', _id: ''},
+  fetchUser: () => {}
 });
 
 class UserProvider extends Component<{}, State> {
   state: State = {
-    posts: [],
-    allPosts: [],
+    user: { userName: "", role: "", _id: "" }
   };
 
-  fetchUserTweets = async () => {
-    const request = await axios.get("/api/posts/user/tweets");
-    this.setState({ posts: request.data });
+  fetchUserSession = async () => {
+    const request = await axios.get("/api/users/loggedIn");
+    this.setState({ user: { userName: request.data.userName, role: request.data.role, _id: request.data.id } });
     return request;
   };
 
-  fetchAllTweetsApi = async () => {
-    const request = await axios.get("/api/posts/");
-    this.setState({ allPosts: request.data });
-    return request;
-  };
+  componentDidMount = () => {
+    this.fetchUserSession();
+  }
 
   render() {
     return (
       <UserContext.Provider
         value={{
           ...this.state,
-          fetchTweets: this.fetchUserTweets,
-          fetchAllTweets: this.fetchAllTweetsApi,
+          fetchUser: this.fetchUserSession
         }}
       >
         {this.props.children}
       </UserContext.Provider>
-    );
+    )
   }
 }
 

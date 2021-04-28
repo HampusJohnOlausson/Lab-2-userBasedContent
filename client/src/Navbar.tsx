@@ -14,7 +14,7 @@ export default function NavBar() {
         try {
             const response = await axios.get('/api/users/loggedIn')
             const result = response.data
-            setUserName(result)
+            setUserName(result.userName)
         } catch (error) {
             return error
         }
