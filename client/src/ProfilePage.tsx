@@ -1,12 +1,12 @@
 import axios from 'axios'
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import './style/ProfilePage.css';
 import UserTweets from './UserTweets';
 import { AxiosContext } from './Contexts/reqContext';
 import { TweetObject } from './TweetWrapper';
 
 export default function ProfilePage () {
-  const posts = useContext(AxiosContext)
+  const posts = useContext(AxiosContext);
   const [name, setName] = useState('')
 
     useEffect(() => {
@@ -38,9 +38,9 @@ export default function ProfilePage () {
             </div>
             <div>
             <div>
-                  {posts.posts.map((post: TweetObject) => (
-                      <UserTweets value={post}/>   
-                  ))}
+                {posts.posts.map((post: TweetObject) => (
+                    <UserTweets value={post}/>   
+                ))}
             </div>
             </div>
           </div>
