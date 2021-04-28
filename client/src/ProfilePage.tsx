@@ -19,7 +19,7 @@ export default function ProfilePage () {
           .get("/api/users/loggedIn")
           .then((response) => {
             const data = response.data;
-            setName(data);
+            setName(data.userName);
             console.log(data);
           })
           .catch((error) => {
