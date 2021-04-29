@@ -1,7 +1,7 @@
 
 import React from 'react';
 import './App.css';
-import Layout from './Layout';
+import Layout from './Components/Layout';
 import { BrowserRouter } from 'react-router-dom'
 import AxiosProvider from './Contexts/reqContext';
 import UserProvider from './Contexts/userContext';

@@ -2,9 +2,9 @@ import axios from 'axios'
 import React, { CSSProperties, useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
-import './style/NavBar.css'
+import '../style/NavBar.css'
 import HomeIcon from '@material-ui/icons/Home';
-import { UserContext } from './Contexts/userContext';
+import { UserContext } from '../Contexts/userContext';
 
 export default function NavBar() {
     const userContext = useContext(UserContext)

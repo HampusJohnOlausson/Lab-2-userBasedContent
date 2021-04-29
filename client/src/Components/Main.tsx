@@ -3,7 +3,7 @@ import HandleRegister from "./HandleRegister"
 import { BrowserRouter as Router, Route } from "react-router-dom"
 import UserSelection from "./UserSelection"
 import Navbar from "./Navbar"
-import './style/TweetSection.css'
+import '../style/TweetSection.css'
 import Admin from "./Admin"
 import ProfilePage from "./ProfilePage"
 

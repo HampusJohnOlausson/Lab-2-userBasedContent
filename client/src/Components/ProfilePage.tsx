@@ -1,8 +1,8 @@
 import axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
-import './style/ProfilePage.css';
+import '../style/ProfilePage.css';
 import UserTweets from './UserTweets';
-import { AxiosContext } from './Contexts/reqContext';
+import { AxiosContext } from '../Contexts/reqContext';
 import { TweetObject } from './TweetWrapper';
 
 export default function ProfilePage () {

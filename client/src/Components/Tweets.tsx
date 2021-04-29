@@ -1,11 +1,11 @@
 import { Component, useContext} from 'react'
 import axios from 'axios';
-import "./style/Tweet.css";
-import { AxiosContext } from './Contexts/reqContext';
-import AxiosPutBtn from './axiosRequests/AxiosPutBtn';
-import AxiosDltBtn from './axiosRequests/AxiosDltBtn';
+import "../style/Tweet.css";
+import { AxiosContext } from '../Contexts/reqContext';
+import AxiosPutBtn from '../axiosRequests/AxiosPutBtn';
+import AxiosDltBtn from '../axiosRequests/AxiosDltBtn';
 import { TweetObject } from './TweetWrapper';
-import { UserContext } from './Contexts/userContext';
+import { UserContext } from '../Contexts/userContext';
 import { useEffect } from 'react';
 import { useState } from 'react';
 

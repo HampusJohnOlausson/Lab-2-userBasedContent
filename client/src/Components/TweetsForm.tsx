@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { useContext } from 'react';
 import { useState } from 'react';
-import { AxiosContext } from './Contexts/reqContext';
-import './style/Usertweet.css'
+import { AxiosContext } from '../Contexts/reqContext';
+import '../style/Usertweet.css'
 
 interface Post {
     tweet: string

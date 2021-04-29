@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import './style/HandleUser.css'
+import '../style/HandleUser.css'
 require('express-async-errors')
 
 function UserSelection () {
