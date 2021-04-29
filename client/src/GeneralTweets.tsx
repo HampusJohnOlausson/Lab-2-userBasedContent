@@ -1,33 +1,18 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import Tweets from "./Tweets";
 import TweetsForm from "./TweetsForm";
 import './style/TweetSection.css'
+import { UserContext } from "./Contexts/userContext";
 
 export default function GeneralTweets() {
-
-    const [loggedIn, setLoggedIn] = useState('')
-
-    const makeRequest = async () => {
-      try {
-        const response = await axios.get('/api/users/loggedIn')
-        const result = response.data
-        setLoggedIn(result.userName)
-        console.log('TEST')
-      } catch (error) {
-        
-      }
-    }
-  
-    useEffect(() => {
-      makeRequest()
-    })
+  const userContext = useContext(UserContext)
     
     return(
         <div>
         <Navbar/>
-        {!loggedIn  
+        {!userContext.user.userName  
         ? 
         <div className="tweet">
             <Tweets />
