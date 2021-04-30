@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react'
 import '../style/ProfilePage.css';
 import UserTweets from './UserTweets';
 import { AxiosContext } from '../Contexts/reqContext';
-import { TweetObject } from './TweetWrapper';
+import { TweetObject } from './Tweets';
 
 export default function ProfilePage () {
   const posts = useContext(AxiosContext);

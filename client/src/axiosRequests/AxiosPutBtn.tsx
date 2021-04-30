@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { CSSProperties } from 'react';
-import { TweetObject } from "../Components/TweetWrapper";
+import { TweetObject } from "../Components/Tweets";
 import CreateIcon from '@material-ui/icons/Create';
 import DoneIcon from '@material-ui/icons/Done';
 import ClearIcon from '@material-ui/icons/Clear';

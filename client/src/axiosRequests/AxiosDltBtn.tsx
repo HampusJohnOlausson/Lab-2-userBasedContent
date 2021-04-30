@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { TweetObject } from '../Components/TweetWrapper';
+import { TweetObject } from '../Components/Tweets';
 import ClearIcon from '@material-ui/icons/Clear';
 import { CSSProperties } from 'react';
 

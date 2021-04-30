@@ -2,7 +2,7 @@ import React from 'react';
 import { CSSProperties } from 'react';
 import AxiosDltBtn from '../axiosRequests/AxiosDltBtn';
 import AxiosPutBtn from '../axiosRequests/AxiosPutBtn';
-import { TweetObject } from "./TweetWrapper";
+import { TweetObject } from "./Tweets";
 
 interface Props {
     value: TweetObject

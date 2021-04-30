@@ -1,14 +1,18 @@
-import { Component, useContext} from 'react'
-import axios from 'axios';
+import { useContext } from 'react'
 import "../style/Tweet.css";
 import { AxiosContext } from '../Contexts/reqContext';
 import AxiosPutBtn from '../axiosRequests/AxiosPutBtn';
 import AxiosDltBtn from '../axiosRequests/AxiosDltBtn';
-import { TweetObject } from './TweetWrapper';
 import { UserContext } from '../Contexts/userContext';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
+export interface TweetObject {
+      name: string,
+      tweet: string,
+      updatedAt: string,
+      _id: string
+}
 
 export default function Tweets() {
 
@@ -42,8 +46,6 @@ export default function Tweets() {
             <div className="tweetContainer" key={post._id}>
               <h3 className="userName">@{post.name}</h3>
               <h5 className="tweetParagraph">{post.tweet}</h5>
-              
-              {/* <span className="timeAndDate">{post.updatedAt.replace("T", " - ")}</span> */}
               <span className="timeAndDate">{post.updatedAt.substring(0, post.updatedAt.indexOf(".") + 1).replace("T", " - ")}</span>
               {role === 'admin' || post.name === userName?
                 <div className="lowerSection">
