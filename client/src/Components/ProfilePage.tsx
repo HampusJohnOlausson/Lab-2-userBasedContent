@@ -38,7 +38,7 @@ export default function ProfilePage () {
             <div>
             <div>
                 {posts.posts.map((post: TweetObject) => (
-                    <UserTweets value={post}/>   
+                    <UserTweets key={post._id} value={post}/>   
                 ))}
             </div>
             </div>

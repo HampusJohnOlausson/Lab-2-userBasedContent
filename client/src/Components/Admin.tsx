@@ -59,36 +59,44 @@ export default function Admin() {
        fetchContext();
    })
 
-    return(
-        <div>
+    return (
+      <div>
         <NavBar />
-            {role === 'admin' ?
-                <div className="adminContainer">
-                    {users.map((user: specificUser) => 
-                        <div key={user.userName} className="userList">
-                            <ul>
-                                <li>{user.userName}</li>
-                                <li>{user._id}</li>
-                                <li>{user.role}</li>
-                            </ul>
-                            <div className="changeRole">
-                                <select name="role" onChange={(e) => {
-                                    const selectedRole = e.target.value
-                                    changedUser(selectedRole)
-                                }}>
-                                    <option value="" disabled selected>Select role...</option>
-                                    <option value="user">User</option>
-                                    <option value="admin">Admin</option>
-                                </select>
-                                <button onClick={() => changeUser(user._id)}>Submit</button>
-                            </div>
-                            <button onClick={() => deleteUser(user._id)}>Delete user</button>
-                        </div>
-                    )}
+        {role === "admin" ? (
+          <div className="adminContainer">
+            {users.map((user: specificUser) => (
+              <div key={user.userName} className="userList">
+                <ul>
+                  <li>{user.userName}</li>
+                  <li>{user._id}</li>
+                  <li>{user.role}</li>
+                </ul>
+                <div className="changeRole">
+                  <select
+                    name="role"
+                    defaultValue="Select role..."
+                    onChange={(e) => {
+                      const selectedRole = e.target.value;
+                      changedUser(selectedRole);
+                    }}
+                  >
+                    <option value="" disabled>
+                      Select role...
+                    </option>
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                  </select>
+                  <button onClick={() => changeUser(user._id)}>Submit</button>
                 </div>
-            :
-                <h2>You need to be admin to see this sensitive info</h2>
-            }
-        </div>
-    )
+                <button onClick={() => deleteUser(user._id)}>
+                  Delete user
+                </button>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <h2>You need to be admin to see this sensitive info</h2>
+        )}
+      </div>
+    );
 }

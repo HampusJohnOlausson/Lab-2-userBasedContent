@@ -22,8 +22,7 @@ function TweetsForm() {
     }
 
     const makePostRequest = async (post: Post) => {
-        const response = await axios.post("/api/posts", post);
-        console.log(response);
+        await axios.post("/api/posts", post);
         contextRequest.fetchAllTweets()
     }
 

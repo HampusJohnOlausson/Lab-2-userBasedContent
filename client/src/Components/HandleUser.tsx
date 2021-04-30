@@ -24,11 +24,10 @@ function HandleUser () {
 
     const makeRequest = async (body: apiBody) => {
         try {
-            const response = await axios.post('/api/users/login',
+            await axios.post('/api/users/login',
             body
             )
-            const result = response.data
-            console.log(result);
+            
             history.push('/');  
         } catch (error) {
             const p = document.createElement('p')
