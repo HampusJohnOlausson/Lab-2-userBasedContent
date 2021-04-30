@@ -20,7 +20,6 @@ export default function ProfilePage () {
           .then((response) => {
             const data = response.data;
             setName(data.userName);
-            console.log(data);
           })
           .catch((error) => {
             window.alert('oops ')
