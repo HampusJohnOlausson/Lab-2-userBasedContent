@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 interface UserTweet extends Document {
     name: string, 
-    tweet: string 
+    tweet: string
 }
 
 const tweetSchema = new Schema({

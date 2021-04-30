@@ -42,7 +42,9 @@ export default function Tweets() {
             <div className="tweetContainer" key={post._id}>
               <h3 className="userName">@{post.name}</h3>
               <h5 className="tweetParagraph">{post.tweet}</h5>
-              <span className="timeAndDate">{post.updatedAt}</span>
+              
+              {/* <span className="timeAndDate">{post.updatedAt.replace("T", " - ")}</span> */}
+              <span className="timeAndDate">{post.updatedAt.substring(0, post.updatedAt.indexOf(".") + 1).replace("T", " - ")}</span>
               {role === 'admin' || post.name === userName?
                 <div className="lowerSection">
                   <AxiosDltBtn value={post}/>
