@@ -14,6 +14,7 @@ function HandleRegister () {
     const [password, setPassWord] = useState('')
     const [reEntePassword, setRePassWord] = useState('')
     let history = useHistory()
+    
     const submitedValues = () => {
         const body = {
             userName : username, 

@@ -2,46 +2,20 @@ import NavBar from "./Navbar";
 import '../style/Admin.css'
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { UserContext } from "../Contexts/userContext";
-
-interface specificUser {
-    _id: string
-    userName: string
-    role: string
-    passWord: string
-}
+import { UserContext, UserObject } from "../Contexts/userContext";
 
 export default function Admin() {
-    const [users, setUser] = useState([])
-    const [role, setRole] = useState('')
-    const [, deletedUser] = useState('')
     const [changed, changedUser] = useState({})
-
-
-    const userContext = useContext(UserContext);
-
-    const fetchContext = () => {
-        setRole(userContext.user.role);
-    }
-
-    const getUsers = async () => {
-        try {
-            const response = await axios.get('/api/users/allUsers')
-            const result = response.data
-            setUser(result)
-        } catch (error) {
-               
-        }
-    }
+    const { fetchUsers, allUsers } = useContext(UserContext)
+    const { user } = useContext(UserContext);
 
     const deleteUser = async (userId: string) => {
         try {
-            const response = await axios.delete(`/api/users/deleteUser/${userId} `)
-            const result = response.data
-            deletedUser(result)
+          await axios.delete(`/api/users/deleteUser/${userId} `)
         } catch (error) {
-            
+            console.log(error)
         }
+        fetchUsers()
     }
 
     const changeUser = async (userId: string) => {
@@ -50,21 +24,21 @@ export default function Admin() {
                 role: changed
             })
         } catch (error) {
-            
+            console.log(error)
         }
+        fetchUsers()
     }
 
    useEffect(() => {
-       getUsers();
-       fetchContext();
-   })
+      fetchUsers()
+   },[fetchUsers])
 
     return (
       <div>
         <NavBar />
-        {role === "admin" ? (
+        {user.role === "admin" ? (
           <div className="adminContainer">
-            {users.map((user: specificUser) => (
+            {allUsers.map((user: UserObject) => (
               <div key={user.userName} className="userList">
                 <ul>
                   <li>{user.userName}</li>
