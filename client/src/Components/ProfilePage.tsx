@@ -1,47 +1,35 @@
-import axios from 'axios'
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect } from 'react'
 import '../style/ProfilePage.css';
 import UserTweets from './UserTweets';
 import { AxiosContext } from '../Contexts/reqContext';
 import { TweetObject } from './Tweets';
+import { UserContext } from '../Contexts/userContext';
 
 export default function ProfilePage () {
   const posts = useContext(AxiosContext);
-  const [name, setName] = useState('')
+  const { fetchTweets } = useContext(AxiosContext)
+  const { user } = useContext(UserContext)
 
     useEffect(() => {
-      getInfo();
-      posts.fetchTweets()
-    })
+      fetchTweets()
+    },[fetchTweets])
 
-    const getInfo = () => {
-        axios
-          .get("/api/users/loggedIn")
-          .then((response) => {
-            const data = response.data;
-            setName(data.userName);
-          })
-          .catch((error) => {
-            window.alert('oops ')
-          })
-    }
-
-        return (
-          <div className="profileWrapper">
-            <h2 className="title">Your Profile</h2>
-            <div className="profileContainer">
-              <div
-                className="profileImage"
-              />
-              <h4 className="profileName">{name}</h4>
-            </div>
-            <div>
-            <div>
-                {posts.posts.map((post: TweetObject) => (
-                    <UserTweets key={post._id} value={post}/>   
-                ))}
-            </div>
-            </div>
-          </div>
-        );
+    return (
+      <div className="profileWrapper">
+        <h2 className="title">Your Profile</h2>
+        <div className="profileContainer">
+          <div
+            className="profileImage"
+          />
+          <h4 className="profileName">{user.userName}</h4>
+        </div>
+        <div>
+        <div>
+            {posts.posts.map((post: TweetObject) => (
+                <UserTweets key={post._id} value={post}/>   
+            ))}
+        </div>
+        </div>
+      </div>
+    );
 }

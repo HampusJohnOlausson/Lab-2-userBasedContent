@@ -1,10 +1,11 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { CSSProperties } from 'react';
 import { TweetObject } from "../Components/Tweets";
 import CreateIcon from '@material-ui/icons/Create';
 import DoneIcon from '@material-ui/icons/Done';
 import ClearIcon from '@material-ui/icons/Clear';
+import { AxiosContext } from '../Contexts/reqContext';
 
 interface Props {
     value: TweetObject
@@ -13,6 +14,7 @@ interface Props {
 function AxiosPutBtn(props: Props) {
     const [showInput, setShowInput] = useState(true);
     const [updateValue, setUpdateValue] = useState("");
+    const { fetchAllTweets, fetchTweets } = useContext(AxiosContext)
 
     function showInputField() {
         setShowInput(false);
@@ -29,6 +31,8 @@ function AxiosPutBtn(props: Props) {
     const makePutRequest = async () => {
         const id = props.value._id;
         await axios.put(`/api/posts/${id}`, { tweet: updateValue });
+        fetchAllTweets()
+        fetchTweets()
         closeInputField();
     };
 

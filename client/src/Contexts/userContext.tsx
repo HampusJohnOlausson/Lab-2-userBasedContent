@@ -1,7 +1,7 @@
 import React, { Component, createContext } from "react";
 import axios from "axios";
 
-interface UserObject {
+export interface UserObject {
   userName: string,
   role: string,
   _id: string 
@@ -9,20 +9,25 @@ interface UserObject {
 
 interface State {
   user: UserObject;
+  allUsers: UserObject[]
 }
 
 interface ContextProps extends State {
   fetchUser: () => void;
+  fetchUsers: () => void;
 }
 
 export const UserContext = createContext<ContextProps>({
   user: {userName: '', role: '', _id: ''},
-  fetchUser: () => {}
+  allUsers: [],
+  fetchUser: () => {}, 
+  fetchUsers: () => {}
 });
 
 class UserProvider extends Component<{}, State> {
   state: State = {
-    user: { userName: "", role: "", _id: "" }
+    user: { userName: "", role: "", _id: "" },
+    allUsers: []
   };
 
   fetchUserSession = async () => {
@@ -30,6 +35,16 @@ class UserProvider extends Component<{}, State> {
     this.setState({ user: { userName: request.data.userName, role: request.data.role, _id: request.data.id } });
     return request;
   };
+
+  fetchAllUsers = async () => {
+    try {
+      const response = await axios.get('/api/users/allUsers')
+      const result = response.data
+      this.setState({ allUsers: result })
+    } catch (error) {
+      console.log(error)   
+    }
+  }
 
   componentDidMount = () => {
     this.fetchUserSession();
@@ -44,7 +59,8 @@ class UserProvider extends Component<{}, State> {
       <UserContext.Provider
         value={{
           ...this.state,
-          fetchUser: this.fetchUserSession
+          fetchUser: this.fetchUserSession,
+          fetchUsers: this.fetchAllUsers
         }}
       >
         {this.props.children}
